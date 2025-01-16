@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
     MainWindow::connect(&WindowLogin,&LOGIN::sendLoginSuccess,&MainPage,MainPageShowFunc);
 
     MainPage.TreeWidgetInit();
-    MainPage.StudentInit();
 
     stuSqlite db;
 

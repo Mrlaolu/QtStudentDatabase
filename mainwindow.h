@@ -3,6 +3,8 @@
 
 #include "stusqlite.h"
 #include <QMainWindow>
+#include <QMessageBox>
+#include "ui_mainwindow.h"
 #include "dialog_addstu.h"
 
 QT_BEGIN_NAMESPACE
@@ -37,6 +39,14 @@ private slots:
     void on_btn_change_clicked();
 
     void on_btn_search_clicked();
+
+    void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);  //树形表选择操作
+
+    void on_checkBox_All_stateChanged(int arg1);    //全选键
+
+    void on_tableWidget_itemSelectionChanged();    //表格变化时 全选键也跟着变化
+
+    void on_checkBox_All_clicked();
 
 private:
     Ui::MainWindow *ui;

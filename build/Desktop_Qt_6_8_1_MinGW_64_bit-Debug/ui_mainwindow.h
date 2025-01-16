@@ -49,7 +49,7 @@ public:
     QFormLayout *formLayout_2;
     QGridLayout *gridLayout_TopStackedWidget;
     QPushButton *btn_change;
-    QCheckBox *checkBox;
+    QCheckBox *checkBox_All;
     QPushButton *btn_delete;
     QPushButton *btn_search;
     QPushButton *btn_add;
@@ -151,10 +151,13 @@ public:
 
         gridLayout_TopStackedWidget->addWidget(btn_change, 0, 5, 1, 1);
 
-        checkBox = new QCheckBox(page);
-        checkBox->setObjectName("checkBox");
+        checkBox_All = new QCheckBox(page);
+        checkBox_All->setObjectName("checkBox_All");
+        checkBox_All->setChecked(false);
+        checkBox_All->setAutoRepeat(false);
+        checkBox_All->setTristate(false);
 
-        gridLayout_TopStackedWidget->addWidget(checkBox, 0, 0, 1, 1);
+        gridLayout_TopStackedWidget->addWidget(checkBox_All, 0, 0, 1, 1);
 
         btn_delete = new QPushButton(page);
         btn_delete->setObjectName("btn_delete");
@@ -256,7 +259,7 @@ public:
         btn_main_exit->setText(QCoreApplication::translate("MainWindow", "\351\200\200\345\207\272", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\345\255\246\347\224\237\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
         btn_change->setText(QCoreApplication::translate("MainWindow", "\344\277\256\346\224\271", nullptr));
-        checkBox->setText(QCoreApplication::translate("MainWindow", "\345\205\250\351\200\211", nullptr));
+        checkBox_All->setText(QCoreApplication::translate("MainWindow", "\345\205\250\351\200\211", nullptr));
         btn_delete->setText(QCoreApplication::translate("MainWindow", "\345\210\240\351\231\244", nullptr));
         btn_search->setText(QCoreApplication::translate("MainWindow", "\346\237\245\346\211\276", nullptr));
         btn_add->setText(QCoreApplication::translate("MainWindow", "\345\242\236\345\212\240", nullptr));
