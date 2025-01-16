@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog_AddStu</class>
+ <widget class="QDialog" name="Dialog_AddStu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>473</width>
+    <height>467</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>增加学生</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>420</y>
+     <width>451</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton_save">
+      <property name="text">
+       <string>保存</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_cancel">
+      <property name="text">
+       <string>取消</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>381</width>
+     <height>331</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_Major">
+      <property name="text">
+       <string>专业</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLineEdit" name="lineEdit_Major"/>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLineEdit" name="lineEdit_SName"/>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLineEdit" name="lineEdit_SNo"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_SName">
+      <property name="text">
+       <string>姓名</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_Sex">
+      <property name="text">
+       <string>性别</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_InDate">
+      <property name="text">
+       <string>入学年份</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="2">
+     <widget class="QLineEdit" name="lineEdit_Class"/>
+    </item>
+    <item row="4" column="2">
+     <widget class="QDateEdit" name="dateEdit_Birth">
+      <property name="dateTime">
+       <datetime>
+        <hour>16</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>1969</year>
+        <month>12</month>
+        <day>31</day>
+       </datetime>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="2">
+     <widget class="QLineEdit" name="lineEdit_Tele"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="lable_SNo">
+      <property name="text">
+       <string>学号（必填）</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_Tele">
+      <property name="text">
+       <string>联系电话</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QDateEdit" name="dateEdit_InDate">
+      <property name="dateTime">
+       <datetime>
+        <hour>0</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>1969</year>
+        <month>12</month>
+        <day>31</day>
+       </datetime>
+      </property>
+      <property name="maximumDate">
+       <date>
+        <year>9998</year>
+        <month>12</month>
+        <day>31</day>
+       </date>
+      </property>
+      <property name="currentSection">
+       <enum>QDateTimeEdit::Section::YearSection</enum>
+      </property>
+      <property name="displayFormat">
+       <string>yyyy</string>
+      </property>
+      <property name="currentSectionIndex">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_Birth">
+      <property name="text">
+       <string>生日</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_Class">
+      <property name="text">
+       <string>班级</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QComboBox" name="comboBox_Sex">
+      <item>
+       <property name="text">
+        <string>男</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>女</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>未知</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>lineEdit_SNo</tabstop>
+  <tabstop>lineEdit_SName</tabstop>
+  <tabstop>comboBox_Sex</tabstop>
+  <tabstop>dateEdit_InDate</tabstop>
+  <tabstop>dateEdit_Birth</tabstop>
+  <tabstop>lineEdit_Major</tabstop>
+  <tabstop>lineEdit_Class</tabstop>
+  <tabstop>lineEdit_Tele</tabstop>
+  <tabstop>pushButton_save</tabstop>
+  <tabstop>pushButton_cancel</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
