@@ -22,6 +22,7 @@ public:
     ~MainWindow();
     void TreeWidgetInit();
     void StudentInit();
+    void CourseInit();
 
 private slots:
     void on_btn_main_exit_clicked();
@@ -52,6 +53,7 @@ private:
     Ui::MainWindow *ui;
     stuSqlite * stuSqlitePtr;
     Dialog_AddStu dlgAddStu;
-    int mode;
+    int TableChoice;
+    int AdminOrStudent;
 };
 #endif // MAINWINDOW_H

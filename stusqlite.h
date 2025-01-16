@@ -26,7 +26,7 @@ struct PickInfo{
     qreal Score;
 };
 
-struct CorInfo{
+struct CourseInfo{
     QString CNo;
     QString CName;
     QString CTeacher;
@@ -78,6 +78,19 @@ public:
     bool delUser(QString);              //删除单个用户
 
     QList<StuInfo> singalSeachStu(QString,QString);      //学生单个指定信息的搜索
+
+
+    quint32 getCourseCnt();                 //获得课程总数
+
+    QList<CourseInfo> getCourse();          //获得课程全部信息
+
+    QList<CourseInfo> singalSeachCoures(QString,QString);      //查单个课程信息
+
+    bool addCourse(CourseInfo);             //添加课程信息
+
+    bool delCourse(QString);             //删除课程信息
+
+
 
 signals:
 private:

@@ -14,47 +14,11 @@ stuSqlite::stuSqlite(QObject *parent)
                              tr("An error occurred while "
                                 "opening the connection: %1") .arg(db.lastError().text()));
     }
-    // if (!db.open()) {
-    //     qDebug() << "Can't open database" << db.lastError();
-    // }
-
-
-
 
     auto str = QCoreApplication::applicationDirPath() + "data.db";          //软件路径获取
     qDebug() << str;
     qDebug() << "Success open database";
 
-
-    //test.............//
-
-    // QSqlQuery q("",db);
-    //  q.exec("INSERT INTO student VALUES ('2', 'TEST', '1990-01-01', 'Computer Science','','','','')");
-
-
-    // StuInfo s;s.SNo = "test";
-    // addStu(s);
-    // for(int i = 0;i < 10;++i){
-    //     s.SNo = QString::number(i);
-    //     addStu(s);
-    // }
-    // getStuCnt();
-
-    // getPageStu(2,3);
-    // qDebug() << delStu("3");
-    // // clearStuTable();
-    // s.SNo = "4",s.SName = "SHUANG";
-    // updateStuInfo(s);
-
-    // UserInfo info;
-    // for(int i = 0;i < 10;++i){
-    //     info.Username = QString::number(i);
-    //     addUser(info);
-    // }
-    // qDebug() << isExistUser("3");
-    // qDebug() << delUser("2");
-    // qDebug() << isExistUser("2");
-    // updateUser({"3","123","ad"});
 }
 
 quint32 stuSqlite::getStuCnt()
@@ -209,5 +173,92 @@ QList<StuInfo> stuSqlite::singalSeachStu(QString key, QString context)
     }
     return l;
 }
+
+
+//************************课程表功能区****************************//
+quint32 stuSqlite::getCourseCnt()
+{
+    QSqlQuery sql(db);
+    sql.exec("SELECT COUNT(*) FROM Course");
+    quint32 uiCnt = 0;
+    while(sql.next()){
+        uiCnt = sql.value(0).toUInt();
+    }
+    return uiCnt;
+}
+
+QList<CourseInfo> stuSqlite::getCourse()
+{
+    QList<CourseInfo> l;
+    QSqlQuery sql(db);
+    QString strSql = QString("SELECT * FROM Course");
+    sql.exec(strSql);
+
+    CourseInfo info;
+    while(sql.next()){
+        info.CNo = sql.value(0).toString();
+        info.CName = sql.value(1).toString();
+        info.CTeacher = sql.value(2).toString();
+        info.CAdder = sql.value(3).toString();
+        info.CTime = sql.value(4).toString();
+        info.Credit = sql.value(5).toReal();
+        l.push_front(info);
+    }
+    return l;
+}
+
+QList<CourseInfo> stuSqlite::singalSeachCoures(QString key, QString context)
+{
+    QList<CourseInfo> l;
+    QSqlQuery sql(db);
+    QString strSql;
+
+    QMap<QString, QString> CourseWordToKey;
+    {   //初始化stu表
+        CourseWordToKey["课程号"] = "CNo";
+        CourseWordToKey["课程名"] = "CName";
+        CourseWordToKey["授课老师"] = "CTeacher";
+        CourseWordToKey["授课地点"] = "CAdder";
+        CourseWordToKey["授课时间"] = "CTime";
+        CourseWordToKey["学分"] = "Credit";
+    }
+    key = CourseWordToKey[key];
+
+    if(context.isEmpty()) strSql = QString("SELECT * FROM Course");
+    else strSql = QString("SELECT * FROM Course WHERE %1 Like '%2\%'").arg(key).arg(context);
+    qDebug() << strSql;
+    sql.exec(strSql);
+
+    CourseInfo info;
+    while(sql.next()){
+        info.CNo = sql.value(0).toString();
+        info.CName = sql.value(1).toString();
+        info.CTeacher = sql.value(2).toString();
+        info.CAdder = sql.value(3).toString();
+        info.CTime = sql.value(4).toString();
+        info.Credit = sql.value(5).toReal();
+        l.push_front(info);
+    }
+    return l;
+}
+
+bool stuSqlite::addCourse(CourseInfo info)
+{
+    QSqlQuery sql(db);
+    QString strSql= QString("INSERT INTO Course VALUES ('%1','%2','%3','%4','%5','%6')").
+                     arg(info.CNo).arg(info.CName).arg(info.CTeacher).arg(info.CAdder).
+                     arg(info.CTime).arg(info.Credit);
+
+    return sql.exec(strSql);
+}
+
+bool stuSqlite::delCourse(QString CNo)
+{
+    QSqlQuery sql(db);
+    bool ret = sql.exec(QString("DELETE FROM Course WHERE CNo='%1'").arg(CNo));
+    qDebug() << 111 << sql.lastError().text();
+    return ret;
+}
+
 
 
