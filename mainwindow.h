@@ -27,8 +27,11 @@ public:
     void CourseInit();
     void PickInit();
     void UserInit();
+    void onUsernameEntered(const QString &username);
 
 private slots:
+
+
     void on_btn_main_exit_clicked();
 
     void on_btn_create_clicked();
@@ -52,6 +55,7 @@ private slots:
     void on_tableWidget_itemSelectionChanged();    //表格变化时 全选键也跟着变化
 
     void on_checkBox_All_clicked();
+
 
 private:
     Ui::MainWindow *ui;

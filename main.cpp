@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     };
     MainWindow::connect(&WindowLogin,&LOGIN::sendLoginSuccess,&MainPage,MainPageShowFunc);
 
+    MainWindow::connect(&WindowLogin, &LOGIN::usernameEntered, &MainPage, &MainWindow::onUsernameEntered);
     MainPage.TreeWidgetInit();
 
     stuSqlite db;

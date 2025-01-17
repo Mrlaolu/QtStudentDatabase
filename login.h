@@ -21,6 +21,7 @@ private slots:
 
 signals:
     void sendLoginSuccess();
+    void usernameEntered(const QString &username);
 
 private:
     Ui::LOGIN *ui;

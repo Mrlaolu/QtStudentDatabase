@@ -24,6 +24,7 @@ void LOGIN::on_btn_login_clicked()
     if(stuSql->isExistUser(ui->lineEdit_Username->text())){
         if(stuSql->isCurrentLoginUser(ui->lineEdit_Username->text(),ui->lineEdit_Password->text())){
             emit sendLoginSuccess();
+            emit usernameEntered(ui->lineEdit_Username->text());
             close();
         }else{
             QMessageBox::information(nullptr,"错误","密码不正确");

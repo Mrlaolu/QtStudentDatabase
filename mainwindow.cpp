@@ -79,6 +79,11 @@ void MainWindow::UserInit()
         ui->comboBox_sreach->addItem(l[i]);
 }
 
+void MainWindow::onUsernameEntered(const QString &username)
+{
+    ui->label_username->setText(username);
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
