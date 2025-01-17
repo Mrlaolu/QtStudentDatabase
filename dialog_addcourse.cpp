@@ -14,11 +14,14 @@ dialog_addCourse::~dialog_addCourse()
     delete ui;
 }
 
-void dialog_addCourse::setType(bool _isAdd, CourseInfo _in)
+void dialog_addCourse::setType(int access,bool _isAdd, CourseInfo _in)
 {
     // ui->lineEdit_Credit->setValidator(new QRegularExpressionValidator(QRegularExpression("^[0-9]*\\.?[0-9]+$")));
     isAdd = _isAdd;
     in = _in;
+    MainAccess = access;
+
+
     if(isAdd){
         this->setWindowTitle("添加课程信息");
         ui->lineEdit_CNo->clear();

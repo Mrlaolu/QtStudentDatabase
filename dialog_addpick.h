@@ -14,7 +14,7 @@ class Dialog_AddPick : public QDialog
 public:
     explicit Dialog_AddPick(QWidget *parent = nullptr);
     ~Dialog_AddPick();
-    void setType(bool _isAdd,QMap<QString,QString>* _StuMap,QMap<QString,QString>* _CourseMap,PickInfo _in = {});
+    void setType(int access,bool _isAdd,QMap<QString,QString>* _StuMap,QMap<QString,QString>* _CourseMap,PickInfo _in = {});
 
 
 private slots:
@@ -24,12 +24,15 @@ private slots:
 
     void on_pushButton_save_clicked();
 
+    void on_pushButton_cancel_clicked();
+
 private:
     Ui::Dialog_AddPick *ui;
     PickInfo in;
     QMap<QString,QString> StuMap;
     QMap<QString,QString> CourseMap;
     bool isAdd;
+    int MainAccess;
 };
 
 #endif // DIALOG_ADDPICK_H

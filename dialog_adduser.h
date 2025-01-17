@@ -14,15 +14,18 @@ class Dialog_AddUser : public QDialog
 public:
     explicit Dialog_AddUser(QWidget *parent = nullptr);
     ~Dialog_AddUser();
-    void setType(bool _isAdd,UserInfo _in = {});
+    void setType(int access,bool _isAdd,UserInfo _in = {});
 
 private slots:
     void on_pushButton_save_clicked();
+
+    void on_pushButton_cancel_clicked();
 
 private:
     Ui::Dialog_AddUser *ui;
     bool isAdd;
     UserInfo in;
+    int MainAccess;
 };
 
 #endif // DIALOG_ADDUSER_H

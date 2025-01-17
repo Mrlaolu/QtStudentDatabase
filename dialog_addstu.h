@@ -15,7 +15,7 @@ class Dialog_AddStu : public QDialog
 public:
     explicit Dialog_AddStu(QWidget *parent = nullptr);
     ~Dialog_AddStu();
-    void setType(bool _isAdd,StuInfo _in = {});
+    void setType(int access,bool _isAdd,StuInfo _in = {});
 
 private slots:
     void on_pushButton_save_clicked();
@@ -28,6 +28,7 @@ private:
     Ui::Dialog_AddStu *ui;
     bool isAdd;
     StuInfo in;
+    int MainAccess;
 };
 
 #endif // DIALOG_ADDSTU_H

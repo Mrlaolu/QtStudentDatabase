@@ -13,8 +13,44 @@
   <property name="windowTitle">
    <string>登录</string>
   </property>
-  <property name="toolTip">
-   <string>请在这里登录</string>
+  <property name="styleSheet">
+   <string>
+     QWidget {
+        background-color: #e6f3ff;
+        font-family: &quot;Segoe UI&quot;, sans-serif;
+     }
+     QLabel {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+     }
+     QLineEdit {
+        font-size: 14px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+     }
+     QPushButton {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: 1px solid #4CAF50;
+        min-width: 100px;
+     }
+     QPushButton:hover {
+        background-color: #45a049;
+     }
+     QPushButton:pressed {
+        background-color: #388E3C;
+     }
+     QLabel#label {
+        font-family: &quot;思源黑体 CN&quot;;
+        font-size: 20px;
+     }
+   </string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="1" column="0">
@@ -32,23 +68,8 @@
       </size>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_Password">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="placeholderText">
-         <string>请输入密码</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label_2">
-        <property name="font">
-         <font>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
         <property name="text">
          <string>用户名</string>
         </property>
@@ -56,6 +77,9 @@
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="lineEdit_Username">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255,0.7);</string>
+        </property>
         <property name="maxLength">
          <number>32</number>
         </property>
@@ -71,28 +95,36 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_Password">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255,0.7);</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::EchoMode::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>请输入密码</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>60</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>60</height>
-      </size>
-     </property>
      <property name="font">
       <font>
        <family>思源黑体 CN</family>
-       <pointsize>20</pointsize>
+       <pointsize>-1</pointsize>
+       <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+            font-size: 40px;
+            font-weight: bold;
+</string>
      </property>
      <property name="text">
       <string>学生管理系统</string>
@@ -117,11 +149,46 @@
       </size>
      </property>
      <layout class="QGridLayout">
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
       <property name="bottomMargin">
-       <number>11</number>
+       <number>2</number>
       </property>
       <item row="1" column="1">
        <widget class="QPushButton" name="btn_exit">
+        <property name="minimumSize">
+         <size>
+          <width>142</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+         QPushButton {
+            background-color: #f44336;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: 1px solid #f44336;
+            min-width: 100px;
+         }
+         QPushButton:hover {
+            background-color: #e53935;
+         }
+         QPushButton:pressed {
+            background-color: #d32f2f;
+         }
+       </string>
+        </property>
         <property name="text">
          <string>退出</string>
         </property>
@@ -129,6 +196,12 @@
       </item>
       <item row="1" column="0">
        <widget class="QPushButton" name="btn_login">
+        <property name="minimumSize">
+         <size>
+          <width>142</width>
+          <height>32</height>
+         </size>
+        </property>
         <property name="text">
          <string>登录</string>
         </property>

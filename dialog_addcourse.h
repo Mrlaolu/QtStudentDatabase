@@ -15,7 +15,7 @@ public:
     explicit dialog_addCourse(QWidget *parent = nullptr);
     ~dialog_addCourse();
 
-    void setType(bool,CourseInfo = {});
+    void setType(int,bool,CourseInfo = {});
 
 private slots:
     void on_pushButton_cancel_clicked();
@@ -26,6 +26,7 @@ private:
     Ui::dialog_addCourse *ui;
     CourseInfo in;
     bool isAdd;
+    int MainAccess;
 };
 
 #endif // DIALOG_ADDCOURSE_H

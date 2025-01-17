@@ -29,6 +29,7 @@ public:
     void UserInit();
     void onUsernameEntered(const QString &username);
 
+    int getMainAccess();
 private slots:
 
 
@@ -56,7 +57,6 @@ private slots:
 
     void on_checkBox_All_clicked();
 
-
 private:
     Ui::MainWindow *ui;
     stuSqlite * stuSqlitePtr;
@@ -65,6 +65,6 @@ private:
     Dialog_AddPick dlgAddPick;
     Dialog_AddUser dlgAddUser;
     int TableChoice;
-    int AdminOrStudent;
+    int MainAccess;
 };
 #endif // MAINWINDOW_H

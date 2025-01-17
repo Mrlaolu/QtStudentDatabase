@@ -9,7 +9,6 @@
 #ifndef UI_DIALOG_ADDSTU_H
 #define UI_DIALOG_ADDSTU_H
 
-#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
@@ -55,90 +54,9 @@ public:
         if (Dialog_AddStu->objectName().isEmpty())
             Dialog_AddStu->setObjectName("Dialog_AddStu");
         Dialog_AddStu->resize(480, 480);
-        Dialog_AddStu->setStyleSheet(QString::fromUtf8("\n"
-"      QDialog {\n"
-"        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);\n"
-"        color: white;\n"
-"      }\n"
-"\n"
-"      QLabel {\n"
-"        font-size: 14px;\n"
-"        font-weight: bold;\n"
-"        color: white;\n"
-"      }\n"
-"\n"
-"      QLineEdit, QComboBox, QDateEdit {\n"
-"        background-color: #ffffff;\n"
-"        color: #333;\n"
-"        border: 1px solid #ccc;\n"
-"        border-radius: 5px;\n"
-"        padding: 8px;\n"
-"        font-size: 14px;\n"
-"      }\n"
-"\n"
-"      QLineEdit:focus, QComboBox:focus, QDateEdit:focus {\n"
-"        border-color: #3498db;\n"
-"      }\n"
-"\n"
-"      QPushButton {\n"
-"        background-color: #3498db;\n"
-"        color: white;\n"
-"        font-size: 14px;\n"
-"        font-weight: bold;\n"
-"        border-radius: 5px;\n"
-"        padding: 10px 20px;\n"
-"        border: none;\n"
-"      }\n"
-"\n"
-"      QPushButton:hover {\n"
-"        background-color: #2980b9;\n"
-"      }\n"
-"\n"
-"      QPushButton:pressed {\n"
-"  "
-                        "      background-color: #2472a4;\n"
-"      }\n"
-"\n"
-"      QComboBox {\n"
-"        padding-left: 8px;\n"
-"        font-size: 14px;\n"
-"        border: 1px solid #ccc;\n"
-"        border-radius: 5px;\n"
-"      }\n"
-"\n"
-"      QComboBox::drop-down {\n"
-"        subcontrol-origin: padding;\n"
-"        subcontrol-position: right center;\n"
-"        width: 20px;\n"
-"        border-left: 1px solid #ccc;\n"
-"      }\n"
-"\n"
-"      QComboBox::down-arrow {\n"
-"        image: url(:/icons/down_arrow.png);\n"
-"        width: 12px;\n"
-"        height: 12px;\n"
-"      }\n"
-"\n"
-"      QComboBox:hover {\n"
-"        border-color: #3498db;\n"
-"      }\n"
-"\n"
-"      QCheckBox {\n"
-"        font-size: 14px;\n"
-"        color: white;\n"
-"      }\n"
-"\n"
-"      QDateEdit {\n"
-"        background-color: #ffffff;\n"
-"        border: 1px solid #ccc;\n"
-"        border-radius: 5px;\n"
-"        padding: 8px;\n"
-"        font-size: 14px;\n"
-"      }\n"
-"    "));
         layoutWidget = new QWidget(Dialog_AddStu);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(10, 420, 451, 40));
+        layoutWidget->setGeometry(QRect(10, 420, 451, 44));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -149,12 +67,30 @@ public:
 
         pushButton_cancel = new QPushButton(layoutWidget);
         pushButton_cancel->setObjectName("pushButton_cancel");
+        pushButton_cancel->setStyleSheet(QString::fromUtf8("\n"
+"         QPushButton {\n"
+"            background-color: #f44336;\n"
+"            color: white;\n"
+"            font-size: 16px;\n"
+"            font-weight: bold;\n"
+"            border-radius: 5px;\n"
+"            padding: 10px 20px;\n"
+"            border: 1px solid #f44336;\n"
+"            min-width: 100px;\n"
+"         }\n"
+"         QPushButton:hover {\n"
+"            background-color: #e53935;\n"
+"         }\n"
+"         QPushButton:pressed {\n"
+"            background-color: #d32f2f;\n"
+"         }\n"
+"       "));
 
         horizontalLayout->addWidget(pushButton_cancel);
 
         layoutWidget1 = new QWidget(Dialog_AddStu);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(40, 60, 381, 342));
+        layoutWidget1->setGeometry(QRect(50, 50, 381, 342));
         gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -201,7 +137,6 @@ public:
         dateEdit_Birth = new QDateEdit(layoutWidget1);
         dateEdit_Birth->setObjectName("dateEdit_Birth");
         dateEdit_Birth->setMinimumSize(QSize(0, 35));
-        dateEdit_Birth->setDateTime(QDateTime(QDate(1969, 12, 31), QTime(0, 0, 0)));
 
         gridLayout->addWidget(dateEdit_Birth, 4, 2, 1, 1);
 
@@ -223,10 +158,6 @@ public:
         dateEdit_InDate = new QDateEdit(layoutWidget1);
         dateEdit_InDate->setObjectName("dateEdit_InDate");
         dateEdit_InDate->setMinimumSize(QSize(0, 35));
-        dateEdit_InDate->setDateTime(QDateTime(QDate(1969, 12, 29), QTime(0, 0, 0)));
-        dateEdit_InDate->setMaximumDate(QDate(9998, 12, 31));
-        dateEdit_InDate->setCurrentSection(QDateTimeEdit::Section::YearSection);
-        dateEdit_InDate->setCurrentSectionIndex(0);
 
         gridLayout->addWidget(dateEdit_InDate, 3, 2, 1, 1);
 
@@ -266,6 +197,88 @@ public:
     void retranslateUi(QDialog *Dialog_AddStu)
     {
         Dialog_AddStu->setWindowTitle(QCoreApplication::translate("Dialog_AddStu", "\345\242\236\345\212\240\345\255\246\347\224\237", nullptr));
+        Dialog_AddStu->setStyleSheet(QCoreApplication::translate("Dialog_AddStu", "\n"
+"      QDialog {\n"
+"        background-color: #e6f3ff;\n"
+"        font-family: \"Segoe UI\", sans-serif;\n"
+"      }\n"
+"\n"
+"      QLabel {\n"
+"        font-size: 14px;\n"
+"        font-weight: bold;\n"
+"        color: #333;\n"
+"      }\n"
+"\n"
+"      QLineEdit, QComboBox, QDateEdit {\n"
+"        background-color: #ffffff;\n"
+"        color: #333;\n"
+"        border: 1px solid #ccc;\n"
+"        border-radius: 5px;\n"
+"        padding: 8px;\n"
+"        font-size: 14px;\n"
+"      }\n"
+"\n"
+"      QLineEdit:focus, QComboBox:focus, QDateEdit:focus {\n"
+"        border-color: #3498db;\n"
+"      }\n"
+"\n"
+"      QPushButton {\n"
+"        background-color: #4CAF50;\n"
+"        color: white;\n"
+"        font-size: 16px;\n"
+"        font-weight: bold;\n"
+"        border-radius: 5px;\n"
+"        padding: 10px 20px;\n"
+"        border: 1px solid #4CAF50;\n"
+"        min-width: 100px;\n"
+"      }\n"
+"\n"
+"      QPushButton:hover {\n"
+"        background-color: #45a049;\n"
+"      }\n"
+"\n"
+"      QPushButton:pressed"
+                        " {\n"
+"        background-color: #388E3C;\n"
+"      }\n"
+"\n"
+"      QComboBox {\n"
+"        padding-left: 8px;\n"
+"        font-size: 14px;\n"
+"        border: 1px solid #ccc;\n"
+"        border-radius: 5px;\n"
+"      }\n"
+"\n"
+"      QComboBox::drop-down {\n"
+"        subcontrol-origin: padding;\n"
+"        subcontrol-position: right center;\n"
+"        width: 20px;\n"
+"        border-left: 1px solid #ccc;\n"
+"      }\n"
+"\n"
+"      QComboBox::down-arrow {\n"
+"        image: url(:/icons/down_arrow.png);\n"
+"        width: 12px;\n"
+"        height: 12px;\n"
+"      }\n"
+"\n"
+"      QComboBox:hover {\n"
+"        border-color: #3498db;\n"
+"      }\n"
+"\n"
+"      QCheckBox {\n"
+"        font-size: 14px;\n"
+"        color: #333;\n"
+"      }\n"
+"\n"
+"      QDateEdit {\n"
+"        background-color: #ffffff;\n"
+"        border: 1px solid #ccc;\n"
+"        border-radius: 5px;\n"
+"        padding: 8px;\n"
+"        font-size: 14px;\n"
+"      }\n"
+"    ", nullptr));
         pushButton_save->setText(QCoreApplication::translate("Dialog_AddStu", "\344\277\235\345\255\230", nullptr));
         pushButton_cancel->setText(QCoreApplication::translate("Dialog_AddStu", "\345\217\226\346\266\210", nullptr));
         label_Major->setText(QCoreApplication::translate("Dialog_AddStu", "\344\270\223\344\270\232", nullptr));
@@ -274,7 +287,6 @@ public:
         label_InDate->setText(QCoreApplication::translate("Dialog_AddStu", "\345\205\245\345\255\246\345\271\264\344\273\275", nullptr));
         lable_SNo->setText(QCoreApplication::translate("Dialog_AddStu", "\345\255\246\345\217\267\357\274\210\345\277\205\345\241\253\357\274\211", nullptr));
         label_Tele->setText(QCoreApplication::translate("Dialog_AddStu", "\350\201\224\347\263\273\347\224\265\350\257\235", nullptr));
-        dateEdit_InDate->setDisplayFormat(QCoreApplication::translate("Dialog_AddStu", "yyyy", nullptr));
         label_Birth->setText(QCoreApplication::translate("Dialog_AddStu", "\347\224\237\346\227\245", nullptr));
         label_Class->setText(QCoreApplication::translate("Dialog_AddStu", "\347\217\255\347\272\247", nullptr));
         comboBox_Sex->setItemText(0, QCoreApplication::translate("Dialog_AddStu", "\347\224\267", nullptr));

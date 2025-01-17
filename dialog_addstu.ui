@@ -14,16 +14,16 @@
    <string>增加学生</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
+   <string>
       QDialog {
-        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
-        color: white;
+        background-color: #e6f3ff;
+        font-family: &quot;Segoe UI&quot;, sans-serif;
       }
 
       QLabel {
         font-size: 14px;
         font-weight: bold;
-        color: white;
+        color: #333;
       }
 
       QLineEdit, QComboBox, QDateEdit {
@@ -40,21 +40,22 @@
       }
 
       QPushButton {
-        background-color: #3498db;
+        background-color: #4CAF50;
         color: white;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: bold;
         border-radius: 5px;
         padding: 10px 20px;
-        border: none;
+        border: 1px solid #4CAF50;
+        min-width: 100px;
       }
 
       QPushButton:hover {
-        background-color: #2980b9;
+        background-color: #45a049;
       }
 
       QPushButton:pressed {
-        background-color: #2472a4;
+        background-color: #388E3C;
       }
 
       QComboBox {
@@ -83,7 +84,7 @@
 
       QCheckBox {
         font-size: 14px;
-        color: white;
+        color: #333;
       }
 
       QDateEdit {
@@ -101,7 +102,7 @@
      <x>10</x>
      <y>420</y>
      <width>451</width>
-     <height>40</height>
+     <height>44</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -114,6 +115,26 @@
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_cancel">
+      <property name="styleSheet">
+       <string notr="true">
+         QPushButton {
+            background-color: #f44336;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: 1px solid #f44336;
+            min-width: 100px;
+         }
+         QPushButton:hover {
+            background-color: #e53935;
+         }
+         QPushButton:pressed {
+            background-color: #d32f2f;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>取消</string>
       </property>
@@ -124,8 +145,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>60</y>
+     <x>50</x>
+     <y>50</y>
      <width>381</width>
      <height>342</height>
     </rect>
@@ -179,16 +200,6 @@
         <height>35</height>
        </size>
       </property>
-      <property name="dateTime">
-       <datetime>
-        <hour>0</hour>
-        <minute>0</minute>
-        <second>0</second>
-        <year>1969</year>
-        <month>12</month>
-        <day>31</day>
-       </datetime>
-      </property>
      </widget>
     </item>
     <item row="7" column="2">
@@ -215,32 +226,6 @@
         <width>0</width>
         <height>35</height>
        </size>
-      </property>
-      <property name="dateTime">
-       <datetime>
-        <hour>0</hour>
-        <minute>0</minute>
-        <second>0</second>
-        <year>1969</year>
-        <month>12</month>
-        <day>29</day>
-       </datetime>
-      </property>
-      <property name="maximumDate">
-       <date>
-        <year>9998</year>
-        <month>12</month>
-        <day>31</day>
-       </date>
-      </property>
-      <property name="currentSection">
-       <enum>QDateTimeEdit::Section::YearSection</enum>
-      </property>
-      <property name="displayFormat">
-       <string>yyyy</string>
-      </property>
-      <property name="currentSectionIndex">
-       <number>0</number>
       </property>
      </widget>
     </item>

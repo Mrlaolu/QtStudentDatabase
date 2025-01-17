@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>学生管理系统</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(38, 74, 138);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">
@@ -69,15 +72,55 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>248</width>
+           <width>400</width>
            <height>20</height>
           </size>
          </property>
         </spacer>
        </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+
+QLabel {
+    border-bottom: none;  /* 去除底部边框 */
+	box-shadow: none;  /* 去除阴影 */
+          
+	background-color: rgb(30, 60, 114);
+}
+
+</string>
+         </property>
+         <property name="text">
+          <string>学生管理系统</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="3">
         <widget class="QWidget" name="TopRightWidget" native="true">
          <layout class="QGridLayout" name="gridLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
           <item row="0" column="0">
            <widget class="QLabel" name="label_username">
             <property name="styleSheet">
@@ -121,35 +164,6 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="label">
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>-1</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-          </string>
-         </property>
-         <property name="text">
-          <string>学生管理系统</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="2">
         <spacer name="TopColomnhspmid">
          <property name="orientation">
@@ -157,7 +171,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>40</width>
+           <width>20</width>
            <height>20</height>
           </size>
          </property>
@@ -179,123 +193,6 @@
       </property>
       <widget class="QWidget" name="page">
        <layout class="QFormLayout" name="formLayout_2">
-        <item row="4" column="0">
-         <widget class="QPushButton" name="btn_create">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">
-             QPushButton {
-               background-color: #f39c12;
-               color: white;
-               font-size: 14px;
-               font-weight: bold;
-               border-radius: 5px;
-               padding: 8px 16px;
-               border: none;
-             }
-             QPushButton:hover {
-               background-color: #e67e22;
-             }
-             QPushButton:pressed {
-               background-color: #d35400;
-             }
-           </string>
-          </property>
-          <property name="text">
-           <string>随机生成数据</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="btn_refresh">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">
-             QPushButton {
-               background-color: #3498db;
-               color: white;
-               font-size: 14px;
-               font-weight: bold;
-               border-radius: 5px;
-               padding: 8px 16px;
-               border: none;
-             }
-             QPushButton:hover {
-               background-color: #2980b9;
-             }
-             QPushButton:pressed {
-               background-color: #2472a4;
-             }
-           </string>
-          </property>
-          <property name="text">
-           <string>立即刷新表格</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QTableWidget" name="tableWidget">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>50</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>380</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QTableWidget {
-      background-color: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-      gridline-color: #ddd;
-    }
-
-    QHeaderView::section {
-      background-color: #1e3c72; /* 设置表头的背景颜色 */
-      color: white; 
-      padding: 8px;
-      border: none;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    QTableWidget::item {
-      padding: 8px;
-    }
-
-    QTableWidget::item:selected {
-      background-color: rgb(200, 230, 250); /* 选中项的背景颜色 */
-      color: black; /* 选中项的文字颜色 */
-    }
-
-    QTableWidget::item:hover {
-      background-color: rgb(173, 218, 243); /* 悬停项的背景颜色 */
-    }</string>
-          </property>
-          <property name="alternatingRowColors">
-           <bool>true</bool>
-          </property>
-          <attribute name="verticalHeaderVisible">
-           <bool>false</bool>
-          </attribute>
-         </widget>
-        </item>
         <item row="0" column="0" colspan="2">
          <layout class="QGridLayout" name="gridLayout_TopStackedWidget">
           <item row="0" column="0">
@@ -307,10 +204,11 @@
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">
-               font-size: 14px;
-               color: white;
-             </string>
+             <string notr="true">QCheckBox::indicator:unchecked {
+    background-color: white;    /* 未选中时指示框的背景颜色 */
+}
+QCheckBox { color: white;
+font-weight: bold }</string>
             </property>
             <property name="text">
              <string>全选</string>
@@ -350,38 +248,58 @@
            <widget class="QComboBox" name="comboBox_sreach">
             <property name="minimumSize">
              <size>
-              <width>0</width>
+              <width>100</width>
               <height>30</height>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">
-               QComboBox {
-                 background-color: #ffffff;
-                 border: 1px solid #ccc;
-                 border-radius: 5px;
-                 padding: 5px 8px;
-                 font-size: 14px;
-                 color: #333;
-               }
-               QComboBox::drop-down {
-                 subcontrol-origin: padding;
-                 subcontrol-position: right center;
-                 width: 20px;
-                 border-left: 1px solid #ccc;
-               }
-               QComboBox::down-arrow {
-                 image: url(:/icons/down_arrow.png);
-                 width: 12px;
-                 height: 12px;
-               }
-               QComboBox:hover {
-                 border-color: #3498db;
-               }
-               QComboBox:on {
-                 border-color: #3498db;
-               }
-             </string>
+             <string notr="true">QComboBox {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: right center;
+    width: 20px;
+    border-left: 1px solid #ccc;
+    background-color: #ffffff;  /* 设置下拉框的背景颜色为白色 */
+}
+
+QComboBox::item {
+    background-color: #ffffff;  /* 下拉列表项背景颜色 */
+    color: #333;  /* 下拉列表项文字颜色 */
+}
+
+QComboBox::item:selected {
+    background-color: #3498db;  /* 选中项的背景颜色 */
+    color: white;  /* 选中项的文字颜色 */
+}
+
+QComboBox:hover {
+    border-color: #3498db;
+}
+
+QComboBox:on {
+    border-color: #3498db;
+}
+
+/* 额外设置列表视图背景颜色 */
+QComboBox QAbstractItemView {
+    background-color: rgba(255, 255, 255, 0.95);  /* 设置列表项背景为白色 */
+    border: 1px solid #ccc;
+}
+</string>
+            </property>
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
+            </property>
+            <property name="frame">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -521,6 +439,123 @@
           </item>
          </layout>
         </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>50</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>380</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableWidget {
+      background-color: rgba(255, 255, 255,0.95);;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      gridline-color: #ddd;
+    }
+
+    QHeaderView::section {
+      background-color: #1e3c72; /* 设置表头的背景颜色 */
+      color: white; 
+      padding: 8px;
+      border: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    QTableWidget::item {
+      padding: 8px;
+    }
+
+    QTableWidget::item:selected {
+      background-color: rgb(200, 230, 250); /* 选中项的背景颜色 */
+      color: black; /* 选中项的文字颜色 */
+    }
+
+    QTableWidget::item:hover {
+      background-color: rgb(173, 218, 243); /* 悬停项的背景颜色 */
+    }</string>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="btn_create">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+             QPushButton {
+               background-color: #f39c12;
+               color: white;
+               font-size: 14px;
+               font-weight: bold;
+               border-radius: 5px;
+               padding: 8px 16px;
+               border: none;
+             }
+             QPushButton:hover {
+               background-color: #e67e22;
+             }
+             QPushButton:pressed {
+               background-color: #d35400;
+             }
+           </string>
+          </property>
+          <property name="text">
+           <string>随机生成数据</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QPushButton" name="btn_refresh">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+             QPushButton {
+               background-color: #3498db;
+               color: white;
+               font-size: 14px;
+               font-weight: bold;
+               border-radius: 5px;
+               padding: 8px 16px;
+               border: none;
+             }
+             QPushButton:hover {
+               background-color: #2980b9;
+             }
+             QPushButton:pressed {
+               background-color: #2472a4;
+             }
+           </string>
+          </property>
+          <property name="text">
+           <string>立即刷新表格</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="page_2"/>
@@ -530,7 +565,7 @@
      <widget class="QTreeWidget" name="treeWidget">
       <property name="styleSheet">
        <string notr="true">QTreeWidget {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255,0.95);
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;

@@ -52,12 +52,6 @@ public:
         if (dialog_addCourse->objectName().isEmpty())
             dialog_addCourse->setObjectName("dialog_addCourse");
         dialog_addCourse->resize(400, 400);
-        dialog_addCourse->setStyleSheet(QString::fromUtf8("\n"
-"     QDialog {\n"
-"        background-color: rgb(4, 131, 212);\n"
-"        font-family: \"Segoe UI\", sans-serif;\n"
-"     }\n"
-"   "));
         layoutWidget = new QWidget(dialog_addCourse);
         layoutWidget->setObjectName("layoutWidget");
         layoutWidget->setGeometry(QRect(10, 350, 381, 44));
@@ -179,6 +173,12 @@ public:
     void retranslateUi(QDialog *dialog_addCourse)
     {
         dialog_addCourse->setWindowTitle(QCoreApplication::translate("dialog_addCourse", "\346\267\273\345\212\240\350\257\276\347\250\213", nullptr));
+        dialog_addCourse->setStyleSheet(QCoreApplication::translate("dialog_addCourse", "\n"
+"     QDialog {\n"
+"        background-color: #e6f3ff;\n"
+"        font-family: \"Segoe UI\", sans-serif;\n"
+"     }\n"
+"   ", nullptr));
         pushButton_save->setStyleSheet(QCoreApplication::translate("dialog_addCourse", "\n"
 "         QPushButton {\n"
 "            background-color: #4CAF50;\n"

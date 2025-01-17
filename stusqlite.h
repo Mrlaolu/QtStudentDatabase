@@ -83,6 +83,8 @@ public:
 
     QList<UserInfo> singalSeachUser(QString,QString);
 
+    int getAccessUser(QString);
+
 
 
 

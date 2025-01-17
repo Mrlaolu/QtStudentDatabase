@@ -10,27 +10,49 @@
     <height>300</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>添加用户</string>
+  </property>
+  <property name="styleSheet">
+   <string>
+     QDialog {
+        background-color: #e6f3ff;
+        font-family: "Segoe UI", sans-serif;
+     }
+   </string>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>250</y>
+     <y>220</y>
      <width>341</width>
-     <height>30</height>
+     <height>40</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QPushButton" name="pushButton_save">
+      <property name="styleSheet">
+       <string>
+         QPushButton {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: 1px solid #4CAF50;
+            min-width: 100px;
+         }
+         QPushButton:hover {
+            background-color: #45a049;
+         }
+         QPushButton:pressed {
+            background-color: #388E3C;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>保存</string>
       </property>
@@ -38,6 +60,26 @@
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_cancel">
+      <property name="styleSheet">
+       <string>
+         QPushButton {
+            background-color: #f44336;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: 1px solid #f44336;
+            min-width: 100px;
+         }
+         QPushButton:hover {
+            background-color: #e53935;
+         }
+         QPushButton:pressed {
+            background-color: #d32f2f;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>取消</string>
       </property>
@@ -45,35 +87,107 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="layoutWidget_2">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>80</y>
-     <width>331</width>
-     <height>111</height>
+     <y>20</y>
+     <width>341</width>
+     <height>180</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_Password"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>密码</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="label_Username">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>用户名</string>
       </property>
      </widget>
     </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_Username">
+      <property name="styleSheet">
+       <string>
+         QLineEdit {
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+         }
+       </string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_Password">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
+      <property name="text">
+       <string>密码</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_Password">
+      <property name="styleSheet">
+       <string>
+         QLineEdit {
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+         }
+       </string>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_Access">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
+      <property name="text">
+       <string>权限</string>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="1">
      <widget class="QComboBox" name="comboBox_Access">
+      <property name="styleSheet">
+       <string>
+         QComboBox {
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+         }
+       </string>
+      </property>
       <item>
        <property name="text">
         <string>1</string>
@@ -85,16 +199,6 @@
        </property>
       </item>
      </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>权限</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_Username"/>
     </item>
    </layout>
   </widget>

@@ -48,31 +48,53 @@ void Dialog_AddStu::on_pushButton_cancel_clicked()
     close();
 }
 
-void Dialog_AddStu::setType(bool _isAdd,StuInfo _in)
+void Dialog_AddStu::setType(int access,bool _isAdd,StuInfo _in)
 {
     isAdd = _isAdd;
     in = _in;
-    if(isAdd){
-        this->setWindowTitle("添加学生信息");
-        ui->lineEdit_SNo->clear();
-        ui->lineEdit_SName->clear();
-        ui->lineEdit_Major->clear();
-        ui->comboBox_Sex->setCurrentText("未知");
-        ui->dateEdit_Birth->setDate(QDate(1970,1,1));
-        ui->dateEdit_InDate->setDate(QDate(1970,1,1));
-        ui->lineEdit_Class->clear();
-        ui->lineEdit_Tele->clear();
+    MainAccess = access;
+
+    if(1 == MainAccess){
+
+        if(isAdd){
+            this->setWindowTitle("添加学生信息");
+            ui->lineEdit_SNo->clear();
+            ui->lineEdit_SName->clear();
+            ui->lineEdit_Major->clear();
+            ui->comboBox_Sex->setCurrentText("未知");
+            ui->dateEdit_Birth->setDate(QDate(1970,1,1));
+            ui->dateEdit_InDate->setDate(QDate(1970,1,1));
+            ui->lineEdit_Class->clear();
+            ui->lineEdit_Tele->clear();
+        }
+        else {
+            this->setWindowTitle("修改学生信息");
+            ui->lineEdit_SNo->setText(in.SNo);
+            ui->lineEdit_SName->setText(in.SName);
+            ui->lineEdit_Major->setText(in.Major);
+            ui->comboBox_Sex->setCurrentText(in.Sex);
+            ui->dateEdit_Birth->setDate(QDate::fromString(in.Birth,"yyyy-MM-dd"));
+            ui->dateEdit_InDate->setDate(QDate::fromString(in.InDate,"yyyy"));
+            ui->lineEdit_Class->setText(in.Class);
+            ui->lineEdit_Tele->setText(in.Tele);
+        }
+
+    }else if(2 == MainAccess){
+        if(!isAdd){
+            this->setWindowTitle("修改学生信息");
+            ui->lineEdit_SNo->setText(in.SNo);
+            ui->lineEdit_SNo->setEnabled(false);
+            ui->lineEdit_SName->setText(in.SName);
+            ui->lineEdit_Major->setText(in.Major);
+            ui->comboBox_Sex->setCurrentText(in.Sex);
+            ui->dateEdit_Birth->setDate(QDate::fromString(in.Birth,"yyyy-MM-dd"));
+            ui->dateEdit_InDate->setDate(QDate::fromString(in.InDate,"yyyy"));
+            ui->lineEdit_Class->setText(in.Class);
+            ui->lineEdit_Tele->setText(in.Tele);
+        }
     }
-    else {
-        this->setWindowTitle("修改学生信息");
-        ui->lineEdit_SNo->setText(in.SNo);
-        ui->lineEdit_SName->setText(in.SName);
-        ui->lineEdit_Major->setText(in.Major);
-        ui->comboBox_Sex->setCurrentText(in.Sex);
-        ui->dateEdit_Birth->setDate(QDate::fromString(in.Birth,"yyyy-MM-dd"));
-        ui->dateEdit_InDate->setDate(QDate::fromString(in.InDate,"yyyy"));
-        ui->lineEdit_Class->setText(in.Class);
-        ui->lineEdit_Tele->setText(in.Tele);
-    }
+
+
+
 }
 

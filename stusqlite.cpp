@@ -171,6 +171,16 @@ QList<UserInfo> stuSqlite::singalSeachUser(QString key, QString context)
     return l;
 }
 
+int stuSqlite::getAccessUser(QString Username)
+{
+    QSqlQuery sql(db);
+    sql.exec(QString("SELECT * FROM User WHERE Username='%1'").arg(Username));
+    while(sql.next()){
+        return sql.value(2).toInt();
+    }
+    return 0;
+}
+
 QList<StuInfo> stuSqlite::singalSeachStu(QString key, QString context)
 {
     QList<StuInfo> l;
