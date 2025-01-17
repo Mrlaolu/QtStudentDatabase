@@ -13,13 +13,95 @@
   <property name="windowTitle">
    <string>增加学生</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+      QDialog {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);
+        color: white;
+      }
+
+      QLabel {
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+      }
+
+      QLineEdit, QComboBox, QDateEdit {
+        background-color: #ffffff;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+      }
+
+      QLineEdit:focus, QComboBox:focus, QDateEdit:focus {
+        border-color: #3498db;
+      }
+
+      QPushButton {
+        background-color: #3498db;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: none;
+      }
+
+      QPushButton:hover {
+        background-color: #2980b9;
+      }
+
+      QPushButton:pressed {
+        background-color: #2472a4;
+      }
+
+      QComboBox {
+        padding-left: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      QComboBox::drop-down {
+        subcontrol-origin: padding;
+        subcontrol-position: right center;
+        width: 20px;
+        border-left: 1px solid #ccc;
+      }
+
+      QComboBox::down-arrow {
+        image: url(:/icons/down_arrow.png);
+        width: 12px;
+        height: 12px;
+      }
+
+      QComboBox:hover {
+        border-color: #3498db;
+      }
+
+      QCheckBox {
+        font-size: 14px;
+        color: white;
+      }
+
+      QDateEdit {
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+      }
+    </string>
+  </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>420</y>
      <width>451</width>
-     <height>30</height>
+     <height>40</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -42,10 +124,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>40</x>
      <y>60</y>
      <width>381</width>
-     <height>331</height>
+     <height>342</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -91,9 +173,15 @@
     </item>
     <item row="4" column="2">
      <widget class="QDateEdit" name="dateEdit_Birth">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>35</height>
+       </size>
+      </property>
       <property name="dateTime">
        <datetime>
-        <hour>8</hour>
+        <hour>0</hour>
         <minute>0</minute>
         <second>0</second>
         <year>1969</year>
@@ -122,6 +210,12 @@
     </item>
     <item row="3" column="2">
      <widget class="QDateEdit" name="dateEdit_InDate">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>35</height>
+       </size>
+      </property>
       <property name="dateTime">
        <datetime>
         <hour>0</hour>
@@ -129,7 +223,7 @@
         <second>0</second>
         <year>1969</year>
         <month>12</month>
-        <day>30</day>
+        <day>29</day>
        </datetime>
       </property>
       <property name="maximumDate">

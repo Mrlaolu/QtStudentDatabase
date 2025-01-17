@@ -55,9 +55,90 @@ public:
         if (Dialog_AddStu->objectName().isEmpty())
             Dialog_AddStu->setObjectName("Dialog_AddStu");
         Dialog_AddStu->resize(480, 480);
+        Dialog_AddStu->setStyleSheet(QString::fromUtf8("\n"
+"      QDialog {\n"
+"        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #1e3c72, stop:1 #2a5298);\n"
+"        color: white;\n"
+"      }\n"
+"\n"
+"      QLabel {\n"
+"        font-size: 14px;\n"
+"        font-weight: bold;\n"
+"        color: white;\n"
+"      }\n"
+"\n"
+"      QLineEdit, QComboBox, QDateEdit {\n"
+"        background-color: #ffffff;\n"
+"        color: #333;\n"
+"        border: 1px solid #ccc;\n"
+"        border-radius: 5px;\n"
+"        padding: 8px;\n"
+"        font-size: 14px;\n"
+"      }\n"
+"\n"
+"      QLineEdit:focus, QComboBox:focus, QDateEdit:focus {\n"
+"        border-color: #3498db;\n"
+"      }\n"
+"\n"
+"      QPushButton {\n"
+"        background-color: #3498db;\n"
+"        color: white;\n"
+"        font-size: 14px;\n"
+"        font-weight: bold;\n"
+"        border-radius: 5px;\n"
+"        padding: 10px 20px;\n"
+"        border: none;\n"
+"      }\n"
+"\n"
+"      QPushButton:hover {\n"
+"        background-color: #2980b9;\n"
+"      }\n"
+"\n"
+"      QPushButton:pressed {\n"
+"  "
+                        "      background-color: #2472a4;\n"
+"      }\n"
+"\n"
+"      QComboBox {\n"
+"        padding-left: 8px;\n"
+"        font-size: 14px;\n"
+"        border: 1px solid #ccc;\n"
+"        border-radius: 5px;\n"
+"      }\n"
+"\n"
+"      QComboBox::drop-down {\n"
+"        subcontrol-origin: padding;\n"
+"        subcontrol-position: right center;\n"
+"        width: 20px;\n"
+"        border-left: 1px solid #ccc;\n"
+"      }\n"
+"\n"
+"      QComboBox::down-arrow {\n"
+"        image: url(:/icons/down_arrow.png);\n"
+"        width: 12px;\n"
+"        height: 12px;\n"
+"      }\n"
+"\n"
+"      QComboBox:hover {\n"
+"        border-color: #3498db;\n"
+"      }\n"
+"\n"
+"      QCheckBox {\n"
+"        font-size: 14px;\n"
+"        color: white;\n"
+"      }\n"
+"\n"
+"      QDateEdit {\n"
+"        background-color: #ffffff;\n"
+"        border: 1px solid #ccc;\n"
+"        border-radius: 5px;\n"
+"        padding: 8px;\n"
+"        font-size: 14px;\n"
+"      }\n"
+"    "));
         layoutWidget = new QWidget(Dialog_AddStu);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(10, 420, 451, 30));
+        layoutWidget->setGeometry(QRect(10, 420, 451, 40));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -73,7 +154,7 @@ public:
 
         layoutWidget1 = new QWidget(Dialog_AddStu);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(50, 60, 381, 331));
+        layoutWidget1->setGeometry(QRect(40, 60, 381, 342));
         gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -119,7 +200,8 @@ public:
 
         dateEdit_Birth = new QDateEdit(layoutWidget1);
         dateEdit_Birth->setObjectName("dateEdit_Birth");
-        dateEdit_Birth->setDateTime(QDateTime(QDate(1969, 12, 31), QTime(8, 0, 0)));
+        dateEdit_Birth->setMinimumSize(QSize(0, 35));
+        dateEdit_Birth->setDateTime(QDateTime(QDate(1969, 12, 31), QTime(0, 0, 0)));
 
         gridLayout->addWidget(dateEdit_Birth, 4, 2, 1, 1);
 
@@ -140,7 +222,8 @@ public:
 
         dateEdit_InDate = new QDateEdit(layoutWidget1);
         dateEdit_InDate->setObjectName("dateEdit_InDate");
-        dateEdit_InDate->setDateTime(QDateTime(QDate(1969, 12, 30), QTime(0, 0, 0)));
+        dateEdit_InDate->setMinimumSize(QSize(0, 35));
+        dateEdit_InDate->setDateTime(QDateTime(QDate(1969, 12, 29), QTime(0, 0, 0)));
         dateEdit_InDate->setMaximumDate(QDate(9998, 12, 31));
         dateEdit_InDate->setCurrentSection(QDateTimeEdit::Section::YearSection);
         dateEdit_InDate->setCurrentSectionIndex(0);

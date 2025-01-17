@@ -6,25 +6,53 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>480</height>
+    <width>400</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>添加课程</string>
+  </property>
+  <property name="styleSheet">
+   <string>
+     QDialog {
+        background-color: #e6f3ff;
+        font-family: &quot;Segoe UI&quot;, sans-serif;
+     }
+   </string>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>430</y>
-     <width>451</width>
-     <height>30</height>
+     <y>350</y>
+     <width>381</width>
+     <height>44</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QPushButton" name="pushButton_save">
+      <property name="styleSheet">
+       <string>
+         QPushButton {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: 1px solid #4CAF50;
+            min-width: 100px;
+         }
+         QPushButton:hover {
+            background-color: #45a049;
+         }
+         QPushButton:pressed {
+            background-color: #388E3C;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>保存</string>
       </property>
@@ -32,6 +60,26 @@
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_cancel">
+      <property name="styleSheet">
+       <string>
+         QPushButton {
+            background-color: #f44336;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: 1px solid #f44336;
+            min-width: 100px;
+         }
+         QPushButton:hover {
+            background-color: #e53935;
+         }
+         QPushButton:pressed {
+            background-color: #d32f2f;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>取消</string>
       </property>
@@ -39,42 +87,165 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="layoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>100</y>
-     <width>381</width>
-     <height>261</height>
+     <x>20</x>
+     <y>20</y>
+     <width>361</width>
+     <height>311</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lable_CNo">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
+      <property name="text">
+       <string>课程号（必填）</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_CNo"/>
+     <widget class="QLineEdit" name="lineEdit_CNo">
+      <property name="styleSheet">
+       <string>
+         QLineEdit {
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+         }
+       </string>
+      </property>
+     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="label_CName">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>课程名</string>
       </property>
      </widget>
     </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_CName">
+      <property name="styleSheet">
+       <string>
+         QLineEdit {
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+         }
+       </string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_CTeacher">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
+      <property name="text">
+       <string>授课教师</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit_CTeacher">
+      <property name="styleSheet">
+       <string>
+         QLineEdit {
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+         }
+       </string>
+      </property>
+     </widget>
+    </item>
     <item row="3" column="0">
-     <widget class="QLabel" name="label_Class">
+     <widget class="QLabel" name="label_CClass">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>授课地点</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="lineEdit_CAdder">
+      <property name="styleSheet">
+       <string>
+         QLineEdit {
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+         }
+       </string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_CTime">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
+      <property name="text">
+       <string>授课时间</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QComboBox" name="comboBox_CTime">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+        <property name="styleSheet">
+         <string>
+           QComboBox {
+              font-size: 14px;
+              padding: 5px;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+           }
+         </string>
         </property>
         <item>
          <property name="text">
@@ -115,50 +286,54 @@
       </item>
       <item>
        <widget class="QTimeEdit" name="timeEdit_CTime">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">           QTimeEdit {
+                font-size: 14px;  &lt;!-- 保持与其他文本框相同的字体大小 --&gt;
+                padding: 5px;  &lt;!-- 保持一致的内边距 --&gt;
+                border: 1px solid #ccc;  &lt;!-- 保持一致的边框颜色 --&gt;
+                border-radius: 3px;  &lt;!-- 圆角设置为与其他文本框一致 --&gt;
+            }</string>
+        </property>
         <property name="displayFormat">
-         <string>HH:mm:ss</string>
+         <string>HH:mm</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_CTeacher">
-      <property name="text">
-       <string>授课教师</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="lineEdit_CTeacher"/>
-    </item>
-    <item row="7" column="1">
-     <widget class="QLineEdit" name="lineEdit_Credit"/>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_CName"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="lable_CNo">
-      <property name="text">
-       <string>课程号（必填）</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="lineEdit_CAdder"/>
-    </item>
     <item row="5" column="0">
-     <widget class="QLabel" name="label_CTime">
-      <property name="text">
-       <string>授课时间</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0">
      <widget class="QLabel" name="label_Credit">
+      <property name="styleSheet">
+       <string>
+         QLabel {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+         }
+       </string>
+      </property>
       <property name="text">
        <string>学分</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="lineEdit_Credit">
+      <property name="styleSheet">
+       <string>
+         QLineEdit {
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+         }
+       </string>
       </property>
      </widget>
     </item>
