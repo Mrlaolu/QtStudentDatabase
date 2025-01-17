@@ -25,9 +25,9 @@ public:
     QGridLayout *gridLayout_3;
     QWidget *widget_2;
     QGridLayout *gridLayout_2;
-    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_Password;
     QLabel *label_2;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_Username;
     QLabel *label_3;
     QLabel *label;
     QWidget *widget;
@@ -48,10 +48,10 @@ public:
         widget_2->setMaximumSize(QSize(16777215, 100));
         gridLayout_2 = new QGridLayout(widget_2);
         gridLayout_2->setObjectName("gridLayout_2");
-        lineEdit_2 = new QLineEdit(widget_2);
-        lineEdit_2->setObjectName("lineEdit_2");
+        lineEdit_Password = new QLineEdit(widget_2);
+        lineEdit_Password->setObjectName("lineEdit_Password");
 
-        gridLayout_2->addWidget(lineEdit_2, 1, 1, 1, 1);
+        gridLayout_2->addWidget(lineEdit_Password, 1, 1, 1, 1);
 
         label_2 = new QLabel(widget_2);
         label_2->setObjectName("label_2");
@@ -61,11 +61,11 @@ public:
 
         gridLayout_2->addWidget(label_2, 0, 0, 1, 1);
 
-        lineEdit = new QLineEdit(widget_2);
-        lineEdit->setObjectName("lineEdit");
-        lineEdit->setMaxLength(32);
+        lineEdit_Username = new QLineEdit(widget_2);
+        lineEdit_Username->setObjectName("lineEdit_Username");
+        lineEdit_Username->setMaxLength(32);
 
-        gridLayout_2->addWidget(lineEdit, 0, 1, 1, 1);
+        gridLayout_2->addWidget(lineEdit_Username, 0, 1, 1, 1);
 
         label_3 = new QLabel(widget_2);
         label_3->setObjectName("label_3");
@@ -119,10 +119,10 @@ public:
 #if QT_CONFIG(tooltip)
         LOGIN->setToolTip(QCoreApplication::translate("LOGIN", "\350\257\267\345\234\250\350\277\231\351\207\214\347\231\273\345\275\225", nullptr));
 #endif // QT_CONFIG(tooltip)
-        lineEdit_2->setText(QString());
-        lineEdit_2->setPlaceholderText(QCoreApplication::translate("LOGIN", "\350\257\267\350\276\223\345\205\245\345\257\206\347\240\201", nullptr));
+        lineEdit_Password->setText(QString());
+        lineEdit_Password->setPlaceholderText(QCoreApplication::translate("LOGIN", "\350\257\267\350\276\223\345\205\245\345\257\206\347\240\201", nullptr));
         label_2->setText(QCoreApplication::translate("LOGIN", "\347\224\250\346\210\267\345\220\215", nullptr));
-        lineEdit->setPlaceholderText(QCoreApplication::translate("LOGIN", "\350\257\267\350\276\223\345\205\245\347\224\250\346\210\267\345\220\215", nullptr));
+        lineEdit_Username->setPlaceholderText(QCoreApplication::translate("LOGIN", "\350\257\267\350\276\223\345\205\245\347\224\250\346\210\267\345\220\215", nullptr));
         label_3->setText(QCoreApplication::translate("LOGIN", "\345\257\206   \347\240\201", nullptr));
         label->setText(QCoreApplication::translate("LOGIN", "\345\255\246\347\224\237\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
         btn_exit->setText(QCoreApplication::translate("LOGIN", "\351\200\200\345\207\272", nullptr));

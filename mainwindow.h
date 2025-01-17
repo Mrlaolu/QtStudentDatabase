@@ -7,6 +7,7 @@
 #include "ui_mainwindow.h"
 #include "dialog_addstu.h"
 #include "dialog_addcourse.h"
+#include "dialog_addpick.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,6 +26,7 @@ public:
     void StudentInit();
     void CourseInit();
     void PickInit();
+    void UserInit();
 
 private slots:
     void on_btn_main_exit_clicked();
@@ -56,6 +58,7 @@ private:
     stuSqlite * stuSqlitePtr;
     Dialog_AddStu dlgAddStu;
     dialog_addCourse dlgAddCourse;
+    Dialog_AddPick dlgAddPick;
     int TableChoice;
     int AdminOrStudent;
 };

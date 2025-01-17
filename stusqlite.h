@@ -71,6 +71,8 @@ public:
 
     bool isExistUser(QString);               //查询用户名是否存在
 
+    bool isCurrentLoginUser(QString,QString);
+
     bool updateUser(UserInfo);      //更新用户信息
 
     bool addUser(UserInfo info);        //添加单个用户;
@@ -94,10 +96,17 @@ public:
 
 
     //**********选课***********//
-    // QList<PickInfo> getPick();
+    QList<PickInfo> getPick();
 
+    quint32 getPickCnt();
 
+    QList<PickInfo> singalSeachPick(QString,QString);
 
+    bool addPick(PickInfo);
+
+    bool delPick(QString,QString);
+
+    bool updatePickInfo(PickInfo);
 
 
 signals:

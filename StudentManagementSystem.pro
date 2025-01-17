@@ -11,6 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     dialog_addcourse.cpp \
+    dialog_addpick.cpp \
     dialog_addstu.cpp \
     login.cpp \
     main.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     NameGen.h \
     dialog_addcourse.h \
+    dialog_addpick.h \
     dialog_addstu.h \
     login.h \
     mainwindow.h \
@@ -27,6 +29,7 @@ HEADERS += \
 
 FORMS += \
     dialog_addcourse.ui \
+    dialog_addpick.ui \
     dialog_addstu.ui \
     login.ui \
     mainwindow.ui

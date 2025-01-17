@@ -109,6 +109,13 @@ bool stuSqlite::isExistUser(QString Username)
     return sql.next();
 }
 
+bool stuSqlite::isCurrentLoginUser(QString Username, QString Password)
+{
+    QSqlQuery sql(db);
+    sql.exec(QString("SELECT * FROM User WHERE Username='%1' AND Password='%2'").arg(Username).arg(Password));
+    return sql.next();
+}
+
 bool stuSqlite::updateUser(UserInfo info)
 {
     QSqlQuery sql(db);
@@ -269,6 +276,86 @@ bool stuSqlite::updateCourseInfo(CourseInfo info)
     qDebug() << 111 << strSql << " " << sql.lastError().text();
     return sql.exec(strSql);
 }
+
+
+//************************选课表功能区****************************//
+QList<PickInfo> stuSqlite::getPick()
+{
+    return singalSeachPick("学号","");
+}
+
+quint32 stuSqlite::getPickCnt()
+{
+    QSqlQuery sql(db);
+    sql.exec("SELECT COUNT(*) FROM Pick");
+    quint32 uiCnt = 0;
+    while(sql.next()){
+        uiCnt = sql.value(0).toUInt();
+    }
+    return uiCnt;
+}
+
+QList<PickInfo> stuSqlite::singalSeachPick(QString key, QString context)
+{
+    QList<PickInfo> l;
+    QSqlQuery sql(db);
+    QString strSql;
+
+    QMap<QString, QString> PickWordToKey;
+    {   //初始化stu表
+        PickWordToKey["学号"] = "SNo";
+        PickWordToKey["课程号"] = "CNo";
+        PickWordToKey["成绩"] = "Score";
+    }
+    key = PickWordToKey[key];
+
+    if(context.isEmpty()) strSql = QString("SELECT * FROM Pick");
+    else strSql = QString("SELECT * FROM Pick WHERE %1 Like '%2\%'").arg(key).arg(context);
+    qDebug() << strSql;
+    sql.exec(strSql);
+
+    PickInfo info;
+    while(sql.next()){
+        info.SNo = sql.value(0).toString();
+        info.CNo = sql.value(1).toString();
+        info.Score = QString(sql.value(2).toString()).toInt();
+        l.push_front(info);
+    }
+    return l;
+}
+
+bool stuSqlite::addPick(PickInfo info)
+{
+    QSqlQuery sql(db);
+    QString strSql= QString("INSERT INTO Pick VALUES ('%1','%2','%3')").
+                     arg(info.SNo).arg(info.CNo).arg(info.Score);
+    sql.exec("PRAGMA foreign_keys = ON;");
+    return sql.exec(strSql);
+}
+
+bool stuSqlite::delPick(QString SNo,QString CNo)
+{
+    QSqlQuery sql(db);
+    QString command = QString("DELETE FROM Pick WHERE SNo='%1'AND CNo='%2'").arg(SNo).arg(CNo);
+    bool ret = sql.exec(command);
+    qDebug() << 111 << command;
+    sql.exec("PRAGMA foreign_keys = ON;");
+    return ret;
+}
+
+bool stuSqlite::updatePickInfo(PickInfo info)
+{
+    QSqlQuery sql(db);
+    QString strSql= QString("Update Pick SET SNo='%1',CNo='%2', Score='%3' WHERE SNo='%1'AND CNo='%2'").
+                     arg(info.SNo).arg(info.CNo).arg(info.Score);
+    qDebug() << 111 << strSql << " " << sql.lastError().text();
+    sql.exec("PRAGMA foreign_keys = ON;");
+    return sql.exec(strSql);
+}
+
+
+
+
 
 
 

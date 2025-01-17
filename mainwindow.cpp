@@ -70,6 +70,15 @@ void MainWindow::PickInit()
         ui->comboBox_sreach->addItem(l[i]);
 }
 
+void MainWindow::UserInit()
+{
+    QStringList l({"账号","密码","权限"});
+    TableChoice = 3;
+    ui->comboBox_sreach->clear();
+    for(int i = 0;i < l.size();++i)
+        ui->comboBox_sreach->addItem(l[i]);
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -139,6 +148,18 @@ void MainWindow::on_btn_add_clicked()
         dlgAddCourse.setType(true);
         dlgAddCourse.exec();
         table_refresh();
+    }else if(3 == TableChoice){
+        QList<StuInfo>Sl = stuSqlitePtr->getPageStu(0,stuSqlitePtr->getStuCnt());
+        QMap<QString,QString>StuMap;
+        for(auto it : Sl)StuMap[it.SNo] = it.SName;
+
+        QList<CourseInfo>Cl = stuSqlitePtr->getCourse();
+        QMap<QString,QString>CourseMap;
+        for(auto it : Cl)CourseMap[it.CNo] = it.CName;
+
+        dlgAddPick.setType(true,&StuMap,&CourseMap);
+        dlgAddPick.exec();
+        table_refresh();
     }else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
     }
@@ -189,7 +210,36 @@ void MainWindow::table_refresh()
             ui->tableWidget->setItem(i,4,new QTableWidgetItem(l[i].CTime));
             ui->tableWidget->setItem(i,5,new QTableWidgetItem(QString::number(l[i].Credit)));
         }
-    }else {
+    }else if(3 == TableChoice){
+        ui->tableWidget->clear();
+
+        ui->tableWidget->setColumnCount(5);
+        ui->tableWidget->setHorizontalHeaderLabels(QStringList({"学号","学生姓名","课程号","课程名称","成绩"}));  // 清空表头内容
+
+        ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+        QList<StuInfo>Sl = stuSqlitePtr->getPageStu(0,stuSqlitePtr->getStuCnt());
+        QMap<QString,QString>StuMap;
+        for(auto it : Sl)StuMap[it.SNo] = it.SName;
+        QList<CourseInfo>Cl = stuSqlitePtr->getCourse();
+        QMap<QString,QString>CourseMap;
+        for(auto it : Cl)CourseMap[it.CNo] = it.CName;
+
+        int PickCnt = stuSqlitePtr->getPickCnt();
+        qDebug() << "刷新到" << PickCnt << "个数据";
+        ui->tableWidget->setRowCount(PickCnt);
+        QList<PickInfo>l = stuSqlitePtr->getPick();
+
+        for(int i = 0;i < l.size();++i){
+            ui->tableWidget->setItem(i,0,new QTableWidgetItem(l[i].SNo));
+            ui->tableWidget->setItem(i,1,new QTableWidgetItem(StuMap[l[i].SNo]));
+            ui->tableWidget->setItem(i,2,new QTableWidgetItem(l[i].CNo));
+            ui->tableWidget->setItem(i,3,new QTableWidgetItem(CourseMap[l[i].CNo]));
+            ui->tableWidget->setItem(i,4,new QTableWidgetItem(QString::number(l[i].Score)));
+        }
+    }
+    else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
     }
 
@@ -211,11 +261,14 @@ void MainWindow::on_btn_delete_clicked()
                 sum += bottomRow - topRow  + 1;
                 for(int j=topRow;j<=bottomRow;j++)
                 {
-                    QString DSNo = ui->tableWidget->item(j,0)->text();
+                    QString Key1 = ui->tableWidget->item(j,0)->text();
+                    QString Key2 = ui->tableWidget->item(j,2)->text();
                     if(1 == TableChoice){
-                        delsum += stuSqlitePtr->delStu(DSNo);
+                        delsum += stuSqlitePtr->delStu(Key1);
                     }else if(2 == TableChoice){
-                        delsum += stuSqlitePtr->delCourse(DSNo);
+                        delsum += stuSqlitePtr->delCourse(Key1);
+                    }else if(3 == TableChoice){
+                        delsum += stuSqlitePtr->delPick(Key1,Key2);
                     }
                 }
             }
@@ -224,7 +277,9 @@ void MainWindow::on_btn_delete_clicked()
             if(1 == TableChoice){
                 QMessageBox::information(nullptr,"信息",QString("一共选中%1个学生信息，其中有%2个删除成功").arg(sum).arg(delsum));
             }else if(2 == TableChoice){
-                QMessageBox::information(nullptr,"信息",QString("一共选中%1个学生信息，其中有%2个删除成功").arg(sum).arg(delsum));
+                QMessageBox::information(nullptr,"信息",QString("一共选中%1个课程信息，其中有%2个删除成功").arg(sum).arg(delsum));
+            }else if(3 == TableChoice){
+                QMessageBox::information(nullptr,"信息",QString("一共选中%1个选课信息，其中有%2个删除成功").arg(sum).arg(delsum));
             }
 
     }else{
@@ -264,6 +319,26 @@ void MainWindow::on_btn_change_clicked()
             info.Credit = QString(ui->tableWidget->item(NowRow,5)->text()).toDouble();
             dlgAddCourse.setType(false,info);
             dlgAddCourse.exec();
+            table_refresh();
+        }
+    }else if(3 == TableChoice){
+        PickInfo info;
+        int NowRow = ui->tableWidget->currentRow();
+        if(NowRow >= 0){
+            info.SNo = ui->tableWidget->item(NowRow,0)->text();
+            info.CNo = ui->tableWidget->item(NowRow,2)->text();
+            info.Score = QString(ui->tableWidget->item(NowRow,4)->text()).toUInt();
+
+            QList<StuInfo>Sl = stuSqlitePtr->getPageStu(0,stuSqlitePtr->getStuCnt());
+            QMap<QString,QString>StuMap;
+            for(auto it : Sl)StuMap[it.SNo] = it.SName;
+
+            QList<CourseInfo>Cl = stuSqlitePtr->getCourse();
+            QMap<QString,QString>CourseMap;
+            for(auto it : Cl)CourseMap[it.CNo] = it.CName;
+
+            dlgAddPick.setType(false,&StuMap,&CourseMap,info);
+            dlgAddPick.exec();
             table_refresh();
         }
     }else{
@@ -316,6 +391,33 @@ void MainWindow::on_btn_search_clicked()
             ui->tableWidget->setItem(i,3,new QTableWidgetItem(l[i].CAdder));
             ui->tableWidget->setItem(i,4,new QTableWidgetItem(l[i].CTime));
             ui->tableWidget->setItem(i,5,new QTableWidgetItem(l[i].Credit));
+        }
+    }else if(3 == TableChoice){
+        QList<PickInfo>l = stuSqlitePtr->singalSeachPick(ui->comboBox_sreach->currentText(),ui->lineEdit_sreach->text());
+        qDebug() << l.size();
+        ui->tableWidget->clear();
+
+        ui->tableWidget->setColumnCount(5);
+        ui->tableWidget->setHorizontalHeaderLabels(QStringList({"学号","学生姓名","课程号","课程名称","成绩"}));  // 清空表头内容
+
+        QList<StuInfo>Sl = stuSqlitePtr->getPageStu(0,stuSqlitePtr->getStuCnt());
+        QMap<QString,QString>StuMap;
+        for(auto it : Sl)StuMap[it.SNo] = it.SName;
+
+        QList<CourseInfo>Cl = stuSqlitePtr->getCourse();
+        QMap<QString,QString>CourseMap;
+        for(auto it : Cl)CourseMap[it.CNo] = it.CName;
+
+        ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui->tableWidget->setRowCount(l.size());
+
+        for(int i = 0;i < l.size();++i){
+            ui->tableWidget->setItem(i,0,new QTableWidgetItem(l[i].SNo));
+            ui->tableWidget->setItem(i,1,new QTableWidgetItem(StuMap[l[i].SNo]));
+            ui->tableWidget->setItem(i,2,new QTableWidgetItem(l[i].CNo));
+            ui->tableWidget->setItem(i,3,new QTableWidgetItem(CourseMap[l[i].CNo]));
+            ui->tableWidget->setItem(i,4,new QTableWidgetItem(l[i].Score));
         }
     }else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
