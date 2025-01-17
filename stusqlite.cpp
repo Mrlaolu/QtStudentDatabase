@@ -21,6 +21,9 @@ stuSqlite::stuSqlite(QObject *parent)
 
 }
 
+
+
+
 quint32 stuSqlite::getStuCnt()
 {
     QSqlQuery sql(db);
@@ -60,7 +63,10 @@ bool stuSqlite::addStu(StuInfo info)
     QString strSql= QString("INSERT INTO Student VALUES ('%1','%2','%3','%4','%5','%6','%7','%8');").
                      arg(info.SNo).arg(info.SName).arg(info.Sex).arg(info.InDate).
                      arg(info.Birth).arg(info.Major).arg(info.Class).arg(info.Tele);
-    return sql.exec(strSql);
+    bool ret = sql.exec(strSql);
+    qDebug() << sql.lastError();
+    qDebug() << strSql;
+    return ret;
 }
 
 bool stuSqlite::delStu(QString SNo)

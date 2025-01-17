@@ -200,6 +200,19 @@
         <height>35</height>
        </size>
       </property>
+      <property name="maximumDateTime">
+       <datetime>
+        <hour>23</hour>
+        <minute>59</minute>
+        <second>59</second>
+        <year>9999</year>
+        <month>12</month>
+        <day>31</day>
+       </datetime>
+      </property>
+      <property name="displayFormat">
+       <string notr="true">yyyy-MM-dd</string>
+      </property>
      </widget>
     </item>
     <item row="7" column="2">
@@ -226,6 +239,12 @@
         <width>0</width>
         <height>35</height>
        </size>
+      </property>
+      <property name="currentSection">
+       <enum>QDateTimeEdit::Section::YearSection</enum>
+      </property>
+      <property name="displayFormat">
+       <string>yyyy</string>
       </property>
      </widget>
     </item>

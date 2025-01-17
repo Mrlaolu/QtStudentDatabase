@@ -73,7 +73,13 @@ void Dialog_AddStu::setType(int access,bool _isAdd,StuInfo _in)
             ui->lineEdit_SName->setText(in.SName);
             ui->lineEdit_Major->setText(in.Major);
             ui->comboBox_Sex->setCurrentText(in.Sex);
-            ui->dateEdit_Birth->setDate(QDate::fromString(in.Birth,"yyyy-MM-dd"));
+            QDate birthDate = QDate::fromString(in.Birth, "yyyy-M-dd");
+            if (birthDate.isValid()) {
+                ui->dateEdit_Birth->setDate(birthDate);
+            } else {
+                qDebug() << "Invalid birth date: " << in.Birth;
+            }
+
             ui->dateEdit_InDate->setDate(QDate::fromString(in.InDate,"yyyy"));
             ui->lineEdit_Class->setText(in.Class);
             ui->lineEdit_Tele->setText(in.Tele);

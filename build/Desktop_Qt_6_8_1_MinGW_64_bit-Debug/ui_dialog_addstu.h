@@ -137,6 +137,8 @@ public:
         dateEdit_Birth = new QDateEdit(layoutWidget1);
         dateEdit_Birth->setObjectName("dateEdit_Birth");
         dateEdit_Birth->setMinimumSize(QSize(0, 35));
+        dateEdit_Birth->setMaximumDateTime(QDateTime(QDate(9999, 12, 31), QTime(23, 59, 59)));
+        dateEdit_Birth->setDisplayFormat(QString::fromUtf8("yyyy-MM-dd"));
 
         gridLayout->addWidget(dateEdit_Birth, 4, 2, 1, 1);
 
@@ -158,6 +160,7 @@ public:
         dateEdit_InDate = new QDateEdit(layoutWidget1);
         dateEdit_InDate->setObjectName("dateEdit_InDate");
         dateEdit_InDate->setMinimumSize(QSize(0, 35));
+        dateEdit_InDate->setCurrentSection(QDateTimeEdit::Section::YearSection);
 
         gridLayout->addWidget(dateEdit_InDate, 3, 2, 1, 1);
 
@@ -287,6 +290,7 @@ public:
         label_InDate->setText(QCoreApplication::translate("Dialog_AddStu", "\345\205\245\345\255\246\345\271\264\344\273\275", nullptr));
         lable_SNo->setText(QCoreApplication::translate("Dialog_AddStu", "\345\255\246\345\217\267\357\274\210\345\277\205\345\241\253\357\274\211", nullptr));
         label_Tele->setText(QCoreApplication::translate("Dialog_AddStu", "\350\201\224\347\263\273\347\224\265\350\257\235", nullptr));
+        dateEdit_InDate->setDisplayFormat(QCoreApplication::translate("Dialog_AddStu", "yyyy", nullptr));
         label_Birth->setText(QCoreApplication::translate("Dialog_AddStu", "\347\224\237\346\227\245", nullptr));
         label_Class->setText(QCoreApplication::translate("Dialog_AddStu", "\347\217\255\347\272\247", nullptr));
         comboBox_Sex->setItemText(0, QCoreApplication::translate("Dialog_AddStu", "\347\224\267", nullptr));

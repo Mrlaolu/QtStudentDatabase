@@ -7,7 +7,7 @@
 #include <QDebug>
 #include <QObject>
 #include <QCoreApplication>
-
+#include <sqlite3.h>
 //与表中定义
 struct StuInfo{
     QString SNo;

@@ -93,7 +93,7 @@ void Dialog_AddPick::on_pushButton_save_clicked()
     PickInfo info;
     info.SNo = ui->comboBox_SNo->currentText();
     info.CNo = ui->comboBox_CNo->currentText();
-    info.Score = ui->lineEdit_Score->text().toInt();
+    info.Score = ui->lineEdit_Score->text().toDouble();
 
     QString feedback;
 

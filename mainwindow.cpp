@@ -132,14 +132,14 @@ void MainWindow::on_btn_create_clicked()        //生成1000条学生数据
             StuInfo info;
             info.SNo = "S";
             NowOrder++;
-            for(int j = QString::number(NowOrder).size();j <= 5;++j){
+            for(int j = QString::number(NowOrder).size();j <= 6;++j){
                 info.SNo += "0";
             }
             info.SNo += QString::number(NowOrder);
             info.SName = generateName(generator.bounded(2, 5));             //[a,b)
 
             info.Sex = Sexlist[generator.bounded(0,2)];
-            info.Birth = QString::number(generator.bounded(2001,2006))+"-"+QString::number(generator.bounded(1,13))+"-"+QString::number(generator.bounded(1,31));
+            info.Birth = QString::number(generator.bounded(2001,2006))+"-"+QString::number(generator.bounded(10,13))+"-"+QString::number(generator.bounded(10,31));
             info.InDate = QString::number(generator.bounded(2021,2025));
             info.Major = MajorList[generator.bounded(0,MajorList.size())];
             info.Tele = "1";
@@ -543,7 +543,7 @@ void MainWindow::on_btn_change_clicked()
         if(NowRow >= 0){
             info.SNo = ui->tableWidget->item(NowRow,0)->text();
             info.CNo = ui->tableWidget->item(NowRow,2)->text();
-            info.Score = QString(ui->tableWidget->item(NowRow,4)->text()).toUInt();
+            info.Score = QString(ui->tableWidget->item(NowRow,4)->text()).toDouble();
 
             QList<StuInfo>Sl = stuSqlitePtr->getPageStu(0,stuSqlitePtr->getStuCnt());
             QMap<QString,QString>StuMap;

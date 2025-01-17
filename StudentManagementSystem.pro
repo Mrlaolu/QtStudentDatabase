@@ -17,6 +17,8 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    shell.c \
+    sqlite3.c \
     stusqlite.cpp
 
 HEADERS += \
@@ -27,6 +29,8 @@ HEADERS += \
     dialog_adduser.h \
     login.h \
     mainwindow.h \
+    sqlite3.h \
+    sqlite3ext.h \
     stusqlite.h
 
 FORMS += \
