@@ -90,6 +90,14 @@ public:
 
     bool delCourse(QString);             //删除课程信息
 
+    bool updateCourseInfo(CourseInfo);
+
+
+    //**********选课***********//
+    // QList<PickInfo> getPick();
+
+
+
 
 
 signals:

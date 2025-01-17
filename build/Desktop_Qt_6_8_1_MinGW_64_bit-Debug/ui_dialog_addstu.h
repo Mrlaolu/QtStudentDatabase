@@ -54,7 +54,7 @@ public:
     {
         if (Dialog_AddStu->objectName().isEmpty())
             Dialog_AddStu->setObjectName("Dialog_AddStu");
-        Dialog_AddStu->resize(473, 467);
+        Dialog_AddStu->resize(480, 480);
         layoutWidget = new QWidget(Dialog_AddStu);
         layoutWidget->setObjectName("layoutWidget");
         layoutWidget->setGeometry(QRect(10, 420, 451, 30));
@@ -119,7 +119,7 @@ public:
 
         dateEdit_Birth = new QDateEdit(layoutWidget1);
         dateEdit_Birth->setObjectName("dateEdit_Birth");
-        dateEdit_Birth->setDateTime(QDateTime(QDate(1969, 12, 31), QTime(16, 0, 0)));
+        dateEdit_Birth->setDateTime(QDateTime(QDate(1969, 12, 31), QTime(8, 0, 0)));
 
         gridLayout->addWidget(dateEdit_Birth, 4, 2, 1, 1);
 
@@ -140,7 +140,7 @@ public:
 
         dateEdit_InDate = new QDateEdit(layoutWidget1);
         dateEdit_InDate->setObjectName("dateEdit_InDate");
-        dateEdit_InDate->setDateTime(QDateTime(QDate(1969, 12, 31), QTime(0, 0, 0)));
+        dateEdit_InDate->setDateTime(QDateTime(QDate(1969, 12, 30), QTime(0, 0, 0)));
         dateEdit_InDate->setMaximumDate(QDate(9998, 12, 31));
         dateEdit_InDate->setCurrentSection(QDateTimeEdit::Section::YearSection);
         dateEdit_InDate->setCurrentSectionIndex(0);

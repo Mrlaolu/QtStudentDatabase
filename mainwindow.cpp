@@ -61,6 +61,15 @@ void MainWindow::CourseInit()
         ui->comboBox_sreach->addItem(l[i]);
 }
 
+void MainWindow::PickInit()
+{
+    QStringList l({"学号","课程号","成绩"});
+    TableChoice = 3;
+    ui->comboBox_sreach->clear();
+    for(int i = 0;i < l.size();++i)
+        ui->comboBox_sreach->addItem(l[i]);
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -126,6 +135,10 @@ void MainWindow::on_btn_add_clicked()
         dlgAddStu.setType(true);
         dlgAddStu.exec();
         table_refresh();
+    }else if(2 == TableChoice){
+        dlgAddCourse.setType(true);
+        dlgAddCourse.exec();
+        table_refresh();
     }else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
     }
@@ -174,7 +187,7 @@ void MainWindow::table_refresh()
             ui->tableWidget->setItem(i,2,new QTableWidgetItem(l[i].CTeacher));
             ui->tableWidget->setItem(i,3,new QTableWidgetItem(l[i].CAdder));
             ui->tableWidget->setItem(i,4,new QTableWidgetItem(l[i].CTime));
-            ui->tableWidget->setItem(i,5,new QTableWidgetItem(l[i].Credit));
+            ui->tableWidget->setItem(i,5,new QTableWidgetItem(QString::number(l[i].Credit)));
         }
     }else {
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
@@ -239,6 +252,20 @@ void MainWindow::on_btn_change_clicked()
             dlgAddStu.exec();
             table_refresh();
         }
+    }else if(2 == TableChoice){
+        CourseInfo info;
+        int NowRow = ui->tableWidget->currentRow();
+        if(NowRow >= 0){
+            info.CNo = ui->tableWidget->item(NowRow,0)->text();
+            info.CName = ui->tableWidget->item(NowRow,1)->text();
+            info.CTeacher = ui->tableWidget->item(NowRow,2)->text();
+            info.CAdder = ui->tableWidget->item(NowRow,3)->text();
+            info.CTime = ui->tableWidget->item(NowRow,4)->text();
+            info.Credit = QString(ui->tableWidget->item(NowRow,5)->text()).toDouble();
+            dlgAddCourse.setType(false,info);
+            dlgAddCourse.exec();
+            table_refresh();
+        }
     }else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
     }
@@ -275,8 +302,8 @@ void MainWindow::on_btn_search_clicked()
         qDebug() << l.size();
         ui->tableWidget->clear();
 
-        ui->tableWidget->setColumnCount(8);
-        ui->tableWidget->setHorizontalHeaderLabels(QStringList({"学号","姓名","性别","入学日期","生日","专业","班级","联系电话"}));  // 清空表头内容
+        ui->tableWidget->setColumnCount(6);
+        ui->tableWidget->setHorizontalHeaderLabels(QStringList({"课程号","课程名","授课老师","授课地点","授课时间","学分"}));  // 清空表头内容
 
         ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
         ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -308,7 +335,7 @@ void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)   
     itemModeMap["学生管理"] = 1;
     itemModeMap["课程管理"] = 2;
     itemModeMap["选课管理"] = 3;
-    itemModeMap["选课管理"] = 3;
+    itemModeMap["登录账户管理"] = 4;
 
 
 
@@ -326,7 +353,11 @@ void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)   
         CourseInit();
         table_refresh();
         break;
-
+    case 3:
+        PickInit();
+        table_refresh();
+    default:
+        table_refresh();
     }
 }
 

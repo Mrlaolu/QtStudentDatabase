@@ -260,5 +260,15 @@ bool stuSqlite::delCourse(QString CNo)
     return ret;
 }
 
+bool stuSqlite::updateCourseInfo(CourseInfo info)
+{
+    QSqlQuery sql(db);
+    QString strSql= QString("Update Course SET CNo='%1',CName='%2', CTeacher='%3' ,CAdder='%4' ,CTime='%5', Credit='%6' WHERE CNo='%1'").
+                     arg(info.CNo).arg(info.CName).arg(info.CTeacher).arg(info.CAdder).
+                     arg(info.CTime).arg(info.Credit);
+    qDebug() << 111 << strSql << " " << sql.lastError().text();
+    return sql.exec(strSql);
+}
+
 
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>473</width>
-    <height>467</height>
+    <width>480</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -93,7 +93,7 @@
      <widget class="QDateEdit" name="dateEdit_Birth">
       <property name="dateTime">
        <datetime>
-        <hour>16</hour>
+        <hour>8</hour>
         <minute>0</minute>
         <second>0</second>
         <year>1969</year>
@@ -129,7 +129,7 @@
         <second>0</second>
         <year>1969</year>
         <month>12</month>
-        <day>31</day>
+        <day>30</day>
        </datetime>
       </property>
       <property name="maximumDate">

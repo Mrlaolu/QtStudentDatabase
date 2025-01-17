@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include "ui_mainwindow.h"
 #include "dialog_addstu.h"
+#include "dialog_addcourse.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,6 +24,7 @@ public:
     void TreeWidgetInit();
     void StudentInit();
     void CourseInit();
+    void PickInit();
 
 private slots:
     void on_btn_main_exit_clicked();
@@ -53,6 +55,7 @@ private:
     Ui::MainWindow *ui;
     stuSqlite * stuSqlitePtr;
     Dialog_AddStu dlgAddStu;
+    dialog_addCourse dlgAddCourse;
     int TableChoice;
     int AdminOrStudent;
 };
