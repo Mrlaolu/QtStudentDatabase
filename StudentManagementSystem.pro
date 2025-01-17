@@ -13,6 +13,7 @@ SOURCES += \
     dialog_addcourse.cpp \
     dialog_addpick.cpp \
     dialog_addstu.cpp \
+    dialog_adduser.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     dialog_addcourse.h \
     dialog_addpick.h \
     dialog_addstu.h \
+    dialog_adduser.h \
     login.h \
     mainwindow.h \
     stusqlite.h
@@ -31,6 +33,7 @@ FORMS += \
     dialog_addcourse.ui \
     dialog_addpick.ui \
     dialog_addstu.ui \
+    dialog_adduser.ui \
     login.ui \
     mainwindow.ui
 

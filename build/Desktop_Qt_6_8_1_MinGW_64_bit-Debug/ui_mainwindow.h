@@ -40,7 +40,7 @@ public:
     QSpacerItem *TopColomnhsp;
     QWidget *TopRightWidget;
     QGridLayout *gridLayout;
-    QLabel *username;
+    QLabel *label_username;
     QPushButton *btn_main_exit;
     QLabel *label;
     QSpacerItem *TopColomnhspmid;
@@ -101,10 +101,10 @@ public:
         TopRightWidget->setObjectName("TopRightWidget");
         gridLayout = new QGridLayout(TopRightWidget);
         gridLayout->setObjectName("gridLayout");
-        username = new QLabel(TopRightWidget);
-        username->setObjectName("username");
+        label_username = new QLabel(TopRightWidget);
+        label_username->setObjectName("label_username");
 
-        gridLayout->addWidget(username, 0, 0, 1, 1);
+        gridLayout->addWidget(label_username, 0, 0, 1, 1);
 
         btn_main_exit = new QPushButton(TopRightWidget);
         btn_main_exit->setObjectName("btn_main_exit");
@@ -255,7 +255,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\345\255\246\347\224\237\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
-        username->setText(QCoreApplication::translate("MainWindow", "\347\224\250\346\210\267\345\220\215", nullptr));
+        label_username->setText(QCoreApplication::translate("MainWindow", "\347\224\250\346\210\267\345\220\215", nullptr));
         btn_main_exit->setText(QCoreApplication::translate("MainWindow", "\351\200\200\345\207\272", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\345\255\246\347\224\237\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
         btn_change->setText(QCoreApplication::translate("MainWindow", "\344\277\256\346\224\271", nullptr));

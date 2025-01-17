@@ -8,7 +8,7 @@
 #include "dialog_addstu.h"
 #include "dialog_addcourse.h"
 #include "dialog_addpick.h"
-
+#include "dialog_adduser.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -59,6 +59,7 @@ private:
     Dialog_AddStu dlgAddStu;
     dialog_addCourse dlgAddCourse;
     Dialog_AddPick dlgAddPick;
+    Dialog_AddUser dlgAddUser;
     int TableChoice;
     int AdminOrStudent;
 };

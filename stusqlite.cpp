@@ -89,14 +89,14 @@ QList<UserInfo> stuSqlite::getALLUser()
 {
     QList<UserInfo> l;
     QSqlQuery sql(db);
-    QString strSql = QString("SELECT * FROM Username");
+    QString strSql = QString("SELECT * FROM User");
     sql.exec(strSql);
 
     UserInfo info;
     while(sql.next()){
         info.Username = sql.value(0).toString();
         info.Password = sql.value(1).toString();
-        info.Access = sql.value(2).toString();
+        info.Access = sql.value(2).toInt();
         l.push_front(info);
     }
     return l;
@@ -140,6 +140,35 @@ bool stuSqlite::delUser(QString Username)
     bool ret = sql.exec(QString("DELETE FROM User WHERE Username='%1'").arg(Username));
     qDebug() << 111 << sql.lastError().text();
     return ret;
+}
+
+QList<UserInfo> stuSqlite::singalSeachUser(QString key, QString context)
+{
+    QList<UserInfo> l;
+    QSqlQuery sql(db);
+    QString strSql;
+
+    QMap<QString, QString> UserWordToKey;
+    {   //初始化stu表
+        UserWordToKey["用户名"] = "Username";
+        UserWordToKey["密码"] = "Password";
+        UserWordToKey["权限"] = "Access";
+    }
+    key = UserWordToKey[key];
+
+    if(context.isEmpty()) strSql = QString("SELECT * FROM User");
+    else strSql = QString("SELECT * FROM User WHERE %1 Like '%2\%'").arg(key).arg(context);
+    qDebug() << strSql;
+    sql.exec(strSql);
+
+    UserInfo info;
+    while(sql.next()){
+        info.Username = sql.value(0).toString();
+        info.Password = sql.value(1).toString();
+        info.Access = sql.value(2).toInt();
+        l.push_front(info);
+    }
+    return l;
 }
 
 QList<StuInfo> stuSqlite::singalSeachStu(QString key, QString context)

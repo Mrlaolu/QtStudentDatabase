@@ -38,7 +38,7 @@ struct CourseInfo{
 struct UserInfo{
     QString Username;
     QString Password;
-    QString Access;
+    quint32 Access;
 };
 
 class stuSqlite : public QObject
@@ -67,6 +67,8 @@ public:
 
     bool updateStuInfo(StuInfo);        //更新学生数据
 
+    QList<StuInfo> singalSeachStu(QString,QString);      //学生单个指定信息的搜索
+
     QList<UserInfo> getALLUser();       //查询所有用户
 
     bool isExistUser(QString);               //查询用户名是否存在
@@ -79,7 +81,9 @@ public:
 
     bool delUser(QString);              //删除单个用户
 
-    QList<StuInfo> singalSeachStu(QString,QString);      //学生单个指定信息的搜索
+    QList<UserInfo> singalSeachUser(QString,QString);
+
+
 
 
     quint32 getCourseCnt();                 //获得课程总数

@@ -72,7 +72,7 @@ void MainWindow::PickInit()
 
 void MainWindow::UserInit()
 {
-    QStringList l({"账号","密码","权限"});
+    QStringList l({"用户名","密码","权限"});
     TableChoice = 3;
     ui->comboBox_sreach->clear();
     for(int i = 0;i < l.size();++i)
@@ -160,7 +160,12 @@ void MainWindow::on_btn_add_clicked()
         dlgAddPick.setType(true,&StuMap,&CourseMap);
         dlgAddPick.exec();
         table_refresh();
-    }else{
+    }else if(4 == TableChoice){
+        dlgAddUser.setType(true);
+        dlgAddUser.exec();
+        table_refresh();
+    }
+    else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
     }
 
@@ -239,7 +244,25 @@ void MainWindow::table_refresh()
             ui->tableWidget->setItem(i,4,new QTableWidgetItem(QString::number(l[i].Score)));
         }
     }
-    else{
+    else if(4 == TableChoice){
+        ui->tableWidget->clear();
+
+        ui->tableWidget->setColumnCount(3);
+        ui->tableWidget->setHorizontalHeaderLabels(QStringList({"用户名","密码","权限"}));  // 清空表头内容
+
+        ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+
+        QList<UserInfo>l = stuSqlitePtr->getALLUser();
+        ui->tableWidget->setRowCount(l.size());
+
+        for(int i = 0;i < l.size();++i){
+            ui->tableWidget->setItem(i,0,new QTableWidgetItem(l[i].Username));
+            ui->tableWidget->setItem(i,1,new QTableWidgetItem(l[i].Password));
+            ui->tableWidget->setItem(i,2,new QTableWidgetItem(QString::number(l[i].Access)));
+        }
+    }else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
     }
 
@@ -269,6 +292,8 @@ void MainWindow::on_btn_delete_clicked()
                         delsum += stuSqlitePtr->delCourse(Key1);
                     }else if(3 == TableChoice){
                         delsum += stuSqlitePtr->delPick(Key1,Key2);
+                    }else if(4 == TableChoice){
+                        delsum += stuSqlitePtr->delUser(Key1);
                     }
                 }
             }
@@ -280,8 +305,9 @@ void MainWindow::on_btn_delete_clicked()
                 QMessageBox::information(nullptr,"信息",QString("一共选中%1个课程信息，其中有%2个删除成功").arg(sum).arg(delsum));
             }else if(3 == TableChoice){
                 QMessageBox::information(nullptr,"信息",QString("一共选中%1个选课信息，其中有%2个删除成功").arg(sum).arg(delsum));
+            }else if(4 == TableChoice){
+                QMessageBox::information(nullptr,"信息",QString("一共选中%1个账号信息，其中有%2个删除成功").arg(sum).arg(delsum));
             }
-
     }else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
     }
@@ -341,7 +367,20 @@ void MainWindow::on_btn_change_clicked()
             dlgAddPick.exec();
             table_refresh();
         }
-    }else{
+    }else if(4 == TableChoice){
+        UserInfo info;
+        int NowRow = ui->tableWidget->currentRow();
+        if(NowRow >= 0){
+            info.Username = ui->tableWidget->item(NowRow,0)->text();
+            info.Password = ui->tableWidget->item(NowRow,1)->text();
+            info.Access = ui->tableWidget->item(NowRow,2)->text().toInt();
+            dlgAddUser.setType(false,info);
+            dlgAddUser.exec();
+            table_refresh();
+        }
+
+    }
+    else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
     }
 
@@ -418,6 +457,23 @@ void MainWindow::on_btn_search_clicked()
             ui->tableWidget->setItem(i,2,new QTableWidgetItem(l[i].CNo));
             ui->tableWidget->setItem(i,3,new QTableWidgetItem(CourseMap[l[i].CNo]));
             ui->tableWidget->setItem(i,4,new QTableWidgetItem(l[i].Score));
+        }
+    }else if(4 == TableChoice){
+        QList<UserInfo>l = stuSqlitePtr->singalSeachUser(ui->comboBox_sreach->currentText(),ui->lineEdit_sreach->text());
+        qDebug() << l.size();
+        ui->tableWidget->clear();
+
+        ui->tableWidget->setColumnCount(3);
+        ui->tableWidget->setHorizontalHeaderLabels(QStringList({"用户名","密码","权限"}));  // 清空表头内容
+
+        ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui->tableWidget->setRowCount(l.size());
+
+        for(int i = 0;i < l.size();++i){
+            ui->tableWidget->setItem(i,0,new QTableWidgetItem(l[i].Username));
+            ui->tableWidget->setItem(i,1,new QTableWidgetItem(l[i].Password));
+            ui->tableWidget->setItem(i,2,new QTableWidgetItem(QString::number(l[i].Access)));
         }
     }else{
         QMessageBox::information(nullptr,"错误","请先选择能进行操作的表格");
